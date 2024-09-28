@@ -1,3 +1,15 @@
+export const SUMMARY = {
+    main: 'Amira Deuraseh is a Creative Frontend Developer with over 5 years of diverse experience in web development, programming education and creative media. She specialises in building interactive web experience using modern JavaScript frameworks & 3D WebGL, transforming innovative ideas to life in the digital space.',
+    sub: 'Beyond development, Amira is also a dedicated programming tutor and passionate visual storyteller, making her a well-rounded professional with a love for design, art and collaboration.',
+    pronoun: 'she/her',
+}
+
+export const CONTACTS = {
+    site: 'www.amiradeuraseh.com',
+    email: 'hello@amiradeuraseh.com',
+    location: 'Seremban, Malaysia',
+}
+
 export const WORKS = [
     {
         title: 'Programming Tutor',
