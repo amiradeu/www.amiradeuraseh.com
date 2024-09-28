@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import Balancer from 'react-wrap-balancer'
 
 function WorkCard({ title, company, year, description }) {
     return (
@@ -7,7 +8,9 @@ function WorkCard({ title, company, year, description }) {
             <Title>{title}</Title>
             <Company>{company}</Company>
             <Year>{year}</Year>
-            <Description>{description}</Description>
+            <Balancer>
+                <Description>{description}</Description>
+            </Balancer>
         </Wrapper>
     )
 }

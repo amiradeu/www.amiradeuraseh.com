@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 
+import MaxWidthWrapper from './MaxWidthWrapper/MaxWidthWrapper'
 import WorkGrid from './WorkGrid/WorkGrid'
 import CertsGrid from './CertsGrid/CertsGrid'
 import LanguageGrid from './LanguageGrid/LanguageGrid'
@@ -9,9 +10,9 @@ import Contact from './Contact'
 
 function OnePager() {
     return (
-        <Wrapper>
+        <MaxWidthWrapper>
             <Header>
-                <Name>Amira Deuraseh</Name>
+                {/* <Name>Amira Deuraseh</Name> */}
                 <Summary />
             </Header>
             <Section>
@@ -33,19 +34,14 @@ function OnePager() {
                 <Title>Languages</Title>
                 <LanguageGrid />
             </Section>
-        </Wrapper>
+        </MaxWidthWrapper>
     )
 }
 
-const Wrapper = styled.div``
 const Header = styled.div``
 const Section = styled.div``
 
-const Name = styled.h1`
-    font-size: 3.2em;
-`
-const Title = styled.h2`
-    font-size: 2.8em;
-`
+const Name = styled.h1``
+const Title = styled.h1``
 
 export default OnePager

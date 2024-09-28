@@ -10,18 +10,19 @@
         "new-component": "new-component"
     },
     "dependencies": {
-        "new-component": "5.0.2",
         "@react-three/drei": "^9.108.1",
         "@react-three/fiber": "^8.16.8",
+        "new-component": "5.0.2",
         "react": "18.2",
         "react-dom": "18.2",
+        "react-wrap-balancer": "^1.1.1",
         "styled-components": "^6.1.8",
         "three": "^0.166.1",
         "vercel": "^34.2.0"
     },
     "devDependencies": {
-        "vite": "^5.2.11",
         "@vitejs/plugin-react": "^4.3.1",
+        "vite": "^5.2.11",
         "vite-plugin-restart": "^0.4.0"
     }
 }
