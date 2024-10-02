@@ -5,10 +5,16 @@ import Balancer from 'react-wrap-balancer'
 import { SUMMARY } from '../../data'
 
 function Summary() {
+    const intro = SUMMARY.main.split('Frontend Developer')
+    console.log(intro)
     return (
         <Wrapper>
             <Balancer>
-                <Main>{SUMMARY.main}</Main>
+                <Main>
+                    {intro[0]}
+                    <em>Frontend Developer</em>
+                    {intro[1]}
+                </Main>
             </Balancer>
             <Balancer>
                 <Sub>{SUMMARY.sub}</Sub>
@@ -18,6 +24,15 @@ function Summary() {
 }
 
 const Wrapper = styled.div``
-const Main = styled.h1``
-const Sub = styled.h3``
+const Main = styled.h1`
+    margin-top: 2em;
+    margin-bottom: 1em;
+
+    font-size: clamp(1.5rem, 4vw + 1rem, 3.8rem);
+`
+const Sub = styled.h2`
+    margin-bottom: 1em;
+    font-size: clamp(1rem, 4vw + 1rem, 1.2rem);
+`
+
 export default Summary

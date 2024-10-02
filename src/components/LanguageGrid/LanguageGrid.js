@@ -3,21 +3,29 @@ import styled from 'styled-components'
 
 import { LANGUAGES } from '../../data'
 import LanguageCard from '../LanguageCard'
+import { QUERIES } from '../../constants'
 
 function LanguageGrid() {
     return (
         <Wrapper>
             {LANGUAGES.map((lang, index) => (
-                <LanguageWrapper key={index}>
-                    <LanguageCard {...lang} />
-                </LanguageWrapper>
+                <LanguageCard key={index} {...lang} />
             ))}
         </Wrapper>
     )
 }
 
-const Wrapper = styled.div``
+const Wrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 
-const LanguageWrapper = styled.div``
+    gap: 2em;
+
+    @media ${QUERIES.tabletAndDown} {
+        flex-direction: column;
+        gap: 0.4em;
+    }
+`
 
 export default LanguageGrid

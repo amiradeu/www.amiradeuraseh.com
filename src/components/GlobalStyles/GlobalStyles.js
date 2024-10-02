@@ -105,20 +105,12 @@ h1, h2, h3, h4, h5, h6, p {
   line-height: var(--heading-line-height);
 }
 
-h1 {  
-  font-size: var(--heading-1-size);
-}
-
-h2 {
-  font-size: var(--heading-2-size);
-}
-
 h3 {
-  font-size: var(--heading-3-size);
+  font-size: clamp(1.2rem, 4vw + 1rem, 1.8rem);
 }
 
 h4 {
-  font-size: var(--heading-4-size);
+  font-size: clamp(1rem, 4vw + 1rem, 1.2rem);
 }
 
 p { 

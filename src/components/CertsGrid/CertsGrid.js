@@ -8,16 +8,12 @@ function CertsGrid() {
     return (
         <Wrapper>
             {CERTIFICATIONS.map((cert, index) => (
-                <CertWrapper key={index}>
-                    <CertCard {...cert} />
-                </CertWrapper>
+                <CertCard {...cert} key={index} />
             ))}
         </Wrapper>
     )
 }
 
 const Wrapper = styled.div``
-
-const CertWrapper = styled.div``
 
 export default CertsGrid

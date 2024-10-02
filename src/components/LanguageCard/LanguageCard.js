@@ -1,24 +1,24 @@
 import React from 'react'
 import styled from 'styled-components'
+import { QUERIES } from '../../constants'
 
 function LanguageCard({ title, level, certLink }) {
     return (
         <Wrapper>
-            <Title>{title}</Title>
-            {certLink ? (
-                <Link href={certLink}>
-                    <Level>{level}</Level>
-                </Link>
-            ) : (
-                <Level>{level}</Level>
-            )}
+            <Language>{title}</Language>
+            <Level>{level}</Level>
         </Wrapper>
     )
 }
 
-const Wrapper = styled.div``
-const Title = styled.h4``
-const Level = styled.p``
+const Wrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+`
+const Language = styled.h3``
+const Level = styled.h4``
+
+const LevelWrapper = styled.div``
 const Link = styled.a``
 
 export default LanguageCard

@@ -8,16 +8,12 @@ function WorkGrid() {
     return (
         <Wrapper>
             {WORKS.map((work, index) => (
-                <WorkWrapper key={index}>
-                    <WorkCard {...work} />
-                </WorkWrapper>
+                <WorkCard key={index} {...work} />
             ))}
         </Wrapper>
     )
 }
 
 const Wrapper = styled.div``
-
-const WorkWrapper = styled.div``
 
 export default WorkGrid

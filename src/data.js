@@ -1,27 +1,28 @@
 export const SUMMARY = {
-    main: 'Amira Deuraseh is a Creative Frontend Developer with over 5 years of diverse experience in web development, programming education and creative media. She specialises in building interactive web experience using modern JavaScript frameworks & 3D WebGL, transforming innovative ideas to life in the digital space.',
+    main: 'Amira Deuraseh is a Frontend Developer with over 5 years of diverse experience in web development, programming education and creative media. She specialises in building interactive web experience using modern JavaScript frameworks & WebGL, transforming innovative ideas to life in the digital space.',
     sub: 'Beyond development, Amira is also a dedicated programming tutor and passionate visual storyteller, making her a well-rounded professional with a love for design, art and collaboration.',
     pronoun: 'she/her',
 }
 
 export const CONTACTS = {
+    name: 'Amira Deuraseh',
     site: 'www.amiradeuraseh.com',
-    email: 'hello@amiradeuraseh.com',
+    email: 'hey@amiradeuraseh.com',
     location: 'Seremban, Malaysia',
 }
 
 export const WORKS = [
     {
         title: 'Programming Tutor',
-        company: 'self-employed',
-        year: '2019 - Current',
+        company: 'Various Clients',
+        year: '2019 - Present',
         description:
             'Amira provides personalised one-to-one tutoring in a wide range of computer science topics, from fundamental concepts to advanced design patterns. Her adaptable teaching style accommodates students from diverse educational backgrounds, and she thrives on the challenges of teaching new subjects and tailoring lessons to meet each student’s specific learning needs.',
     },
     {
         title: 'Creative Content Producer',
-        company: 'self-employed',
-        year: '2021 - Current',
+        company: 'Various Clients',
+        year: '2021 - Present',
         description:
             'As a content producer, Amira seamlessly combines roles as a photographer, videographer, storyteller and editor to create captivating visual content for global brands. Her work with clients across South Korea, Malaysia, Portugal and Japan consistently result in emotionally resonant narratives that drives user engagement for marketing campaigns.',
     },
@@ -77,6 +78,13 @@ export const CERTIFICATIONS = [
             'Focuses on the intricacies of modern CSS, including layout techniques, styled components, animations, and accessibility best practices.',
     },
 ]
+
+export const EDUCATION = {
+    institute: 'Universiti Putra Malaysia (UPM), Serdang',
+    bachelor: 'Bachelor of Computer & Communication Systems Engineering',
+    year: '2016-2019',
+    result: 'Second-Class Upper Honours, CGPA 3.696',
+}
 
 export const LANGUAGES = [
     {

@@ -1,23 +1,23 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import { EDUCATION } from '../../data'
+
 function Education() {
     return (
         <Wrapper>
-            <Title>
-                Bachelor’s Degree in Computer & Communication Systems
-                Engineering
-            </Title>
-            <Institution>Universiti Putra Malaysia (UPM), Serdang</Institution>
-            <Year>2019</Year>
-            <Cert>Second-Class Upper Honours, CGPA 3.696</Cert>
+            <Institution>{EDUCATION.institute}</Institution>
+            <Bachelor>{EDUCATION.bachelor}</Bachelor>
+            <Year>{EDUCATION.year}</Year>
         </Wrapper>
     )
 }
 
 const Wrapper = styled.div``
-const Title = styled.h3``
-const Institution = styled.h4``
+const Institution = styled.h3``
+const Bachelor = styled.h4`
+    padding-block: 0.4em;
+`
 const Year = styled.p``
 const Cert = styled.p``
 
