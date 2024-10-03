@@ -9,6 +9,8 @@ import LanguageGrid from '../components/LanguageGrid/LanguageGrid'
 import Education from '../components/Education'
 import Footer from '../components/Footer'
 
+import Skills from '../experiences/Skills'
+
 function OnePager() {
     return (
         <MaxWidthWrapper>
@@ -17,6 +19,8 @@ function OnePager() {
                 <Summary />
             </Header>
             <Main>
+                {/* <a href='skills'>Go to Skills</a> */}
+                <Skills />
                 <Section>
                     <Title>Work Experience</Title>
                     <WorkGrid />

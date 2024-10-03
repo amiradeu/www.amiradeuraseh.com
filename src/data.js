@@ -110,28 +110,102 @@ export const LANGUAGES = [
 
 export const TECHSTACK = [
     {
-        level: '5',
+        skill: 'ThreeJS',
+        level: 5,
+    },
+    {
+        skill: 'React',
+        level: 5,
+    },
+    {
+        skill: 'Javascript',
+        level: 5,
+    },
+    {
+        skill: 'CSS',
+        level: 5,
+    },
+    {
+        skill: 'styled-component',
+        level: 5,
+    },
+    {
+        skill: 'git',
+        level: 5,
+    },
+    {
+        skill: 'Blender',
+        level: 4,
+    },
+    {
+        skill: 'GLSL',
+        level: 4,
+    },
+    {
+        skill: 'Gsap',
+        level: 3,
+    },
+    {
+        skill: 'NextJS',
+        level: 3,
+    },
+    {
+        skill: 'Node.js',
+        level: 3,
+    },
+    {
+        skill: 'MDX',
+        level: 3,
+    },
+    {
+        skill: 'VueJS',
+        level: 3,
+    },
+    {
+        skill: 'Figma',
+        level: 2,
+    },
+    {
+        skill: 'Illustrator',
+        level: 2,
+    },
+    {
+        skill: 'C++',
+        level: 1,
+    },
+    {
+        skill: 'Java',
+        level: 1,
+    },
+    {
+        skill: 'Python',
+        level: 1,
+    },
+    {
+        skill: 'Web3',
+        level: 1,
+    },
+]
+
+export const LEVELS = [
+    {
+        level: 5,
         description: 'comfortable',
-        skills: ['ThreeJS', 'React', 'Javascript', 'CSS', 'styled-component'],
     },
     {
-        level: '4',
+        level: 4,
         description: 'good',
-        skills: ['Blender', 'GLSL'],
     },
     {
-        level: '3',
+        level: 3,
         description: 'experimental',
-        skills: ['Gsap', 'NextJS', 'MDX', 'VueJS'],
     },
     {
-        level: '2',
+        level: 2,
         description: 'do-able',
-        skills: ['Figma', 'Illustrator'],
     },
     {
-        level: '1',
+        level: 1,
         description: 'well, but not my preference',
-        skills: ['C++', 'Java', 'Python', 'Web3'],
     },
 ]

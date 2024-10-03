@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import App from './routes/App'
 import Error from './routes/Error'
 import OnePager from './routes/OnePager'
+import Skills from './experiences/Skills'
 
 import GlobalStyles from './components/GlobalStyles'
 
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
     {
         path: 'resume',
         element: <OnePager />,
+    },
+    {
+        path: 'skills',
+        element: <Skills />,
     },
 ])
 
