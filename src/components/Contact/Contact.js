@@ -8,8 +8,14 @@ function Contact() {
     return (
         <Wrapper>
             <List>
-                <Name>{CONTACTS.name}</Name>
-                <Email>{CONTACTS.email}</Email>
+                <Name>
+                    <Link href='/'>{CONTACTS.name}</Link>
+                </Name>
+                <Email>
+                    <Link href={`mailto:${CONTACTS.email}`}>
+                        {CONTACTS.email}
+                    </Link>
+                </Email>
                 <Location>{CONTACTS.location}</Location>
             </List>
         </Wrapper>
@@ -40,5 +46,7 @@ const Email = styled.li`
 const Location = styled.li`
     grid-area: location;
 `
+
+const Link = styled.a``
 
 export default Contact

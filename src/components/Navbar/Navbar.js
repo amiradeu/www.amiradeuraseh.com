@@ -4,8 +4,8 @@ import styled from 'styled-components'
 function Navbar() {
     return (
         <Wrapper>
-            <Title>Resume of Amira Deuraseh</Title>
-            <Home href=''>+</Home>
+            <Title href='/'>Resume of Amira Deuraseh</Title>
+            <Home href='/'>+</Home>
         </Wrapper>
     )
 }
@@ -17,6 +17,6 @@ const Wrapper = styled.div`
 `
 
 const Home = styled.a``
-const Title = styled.div``
+const Title = styled.a``
 
 export default Navbar

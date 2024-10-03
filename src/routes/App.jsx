@@ -1,11 +1,11 @@
 import { Provider } from 'react-wrap-balancer'
 
-import OnePager from './OnePager'
+import Home from './Home'
 
 function App() {
     return (
         <Provider>
-            <OnePager />
+            <Home />
         </Provider>
     )
 }

@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 
-import MaxWidthWrapper from './MaxWidthWrapper/MaxWidthWrapper'
-import Navbar from './Navbar'
-import Summary from './Summary'
-import WorkGrid from './WorkGrid/WorkGrid'
-import CertsGrid from './CertsGrid/CertsGrid'
-import LanguageGrid from './LanguageGrid/LanguageGrid'
-import Education from './Education'
-import Footer from './Footer'
+import MaxWidthWrapper from '../components/MaxWidthWrapper/MaxWidthWrapper'
+import Navbar from '../components/Navbar'
+import Summary from '../components/Summary'
+import WorkGrid from '../components/WorkGrid/WorkGrid'
+import CertsGrid from '../components/CertsGrid/CertsGrid'
+import LanguageGrid from '../components/LanguageGrid/LanguageGrid'
+import Education from '../components/Education'
+import Footer from '../components/Footer'
 
 function OnePager() {
     return (
