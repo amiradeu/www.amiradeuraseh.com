@@ -111,63 +111,63 @@ export const LANGUAGES = [
 export const TECHSTACK = [
     {
         skill: 'ThreeJS',
-        level: 5,
+        level: 3,
     },
     {
         skill: 'React',
-        level: 5,
+        level: 3,
     },
     {
         skill: 'Javascript',
-        level: 5,
+        level: 3,
     },
     {
         skill: 'CSS',
-        level: 5,
+        level: 3,
     },
     {
         skill: 'styled-component',
-        level: 5,
+        level: 3,
     },
     {
         skill: 'git',
-        level: 5,
+        level: 3,
     },
     {
         skill: 'Blender',
-        level: 4,
+        level: 3,
     },
     {
         skill: 'GLSL',
-        level: 4,
+        level: 3,
     },
     {
         skill: 'Gsap',
-        level: 3,
+        level: 2,
     },
     {
         skill: 'NextJS',
-        level: 3,
+        level: 2,
     },
     {
         skill: 'Node.js',
-        level: 3,
+        level: 2,
     },
     {
         skill: 'MDX',
-        level: 3,
+        level: 2,
     },
     {
         skill: 'VueJS',
-        level: 3,
+        level: 2,
     },
     {
         skill: 'Figma',
-        level: 2,
+        level: 1,
     },
     {
         skill: 'Illustrator',
-        level: 2,
+        level: 1,
     },
     {
         skill: 'C++',

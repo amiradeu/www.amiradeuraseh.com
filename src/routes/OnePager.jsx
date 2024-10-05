@@ -20,7 +20,11 @@ function OnePager() {
             </Header>
             <Main>
                 {/* <a href='skills'>Go to Skills</a> */}
-                <Skills />
+                <WrapperExperience>
+                    <Experience>
+                        <Skills />
+                    </Experience>
+                </WrapperExperience>
                 <Section>
                     <Title>Work Experience</Title>
                     <WorkGrid />
@@ -45,7 +49,7 @@ function OnePager() {
 
 const Header = styled.header``
 const Main = styled.main`
-    margin-block: 4rem;
+    margin-block-end: 4rem;
 `
 
 const Section = styled.section`
@@ -54,6 +58,16 @@ const Section = styled.section`
 const Title = styled.h2`
     margin-block-end: 0.4em;
     font-size: clamp(1.4rem, 4vw + 1rem, 2.8rem);
+`
+
+const WrapperExperience = styled.div`
+    margin-inline: -32px;
+    margin-block: 16px;
+`
+
+const Experience = styled.div`
+    position: relative;
+    height: 500px;
 `
 
 export default OnePager
