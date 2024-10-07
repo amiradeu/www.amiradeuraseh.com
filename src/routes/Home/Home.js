@@ -22,7 +22,7 @@ const Link = styled.a`
     color: var(--color-primary);
 
     &:hover {
-        color: var(--color-secondary);
+        color: var(--color-offblack);
     }
 `
 export default Home

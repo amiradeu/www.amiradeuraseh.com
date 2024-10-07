@@ -1,6 +1,8 @@
 import React from 'react'
 import Balancer from 'react-wrap-balancer'
 import styled from 'styled-components'
+
+import Link from '../Link'
 import { QUERIES } from '../../constants'
 
 function CertsCard({ title, courseLink, author, year, certLink, description }) {
@@ -8,8 +10,12 @@ function CertsCard({ title, courseLink, author, year, certLink, description }) {
         <Wrapper>
             <Header>
                 <MainHeader>
-                    <Title>{title}</Title>
-                    <SubTitle>by {author}</SubTitle>
+                    <Title>
+                        <Link href={certLink}>{title}</Link>
+                    </Title>
+                    <SubTitle>
+                        by <Link href={courseLink}>{author}</Link>
+                    </SubTitle>
                 </MainHeader>
                 <SubHeader>{year}</SubHeader>
             </Header>
@@ -52,7 +58,5 @@ const Content = styled.p`
         padding: 0;
     }
 `
-
-const CertLink = styled.a``
 
 export default CertsCard

@@ -55,7 +55,7 @@ export const CERTIFICATIONS = [
         courseLink: 'https://threejs-journey.com',
         author: 'Bruno Simon',
         year: '2023',
-        certLink: '',
+        certLink: '/certs/Three.js-Journey-Cert.pdf',
         description:
             'Comprehensive training in WebGL and Three.js library, covering performance optimisation, 3D modeling in Blender, GLSL shaders, GPGPU, and React Three Fibre (r3f).',
     },
@@ -73,7 +73,7 @@ export const CERTIFICATIONS = [
         courseLink: 'https://css-for-js.dev',
         author: 'Josh W Comeau',
         year: '2023',
-        certLink: '',
+        certLink: '/certs/CSS-for-Javascript-Developers-Cert.pdf',
         description:
             'Focuses on the intricacies of modern CSS, including layout techniques, styled components, animations, and accessibility best practices.',
     },
@@ -99,12 +99,11 @@ export const LANGUAGES = [
     {
         title: 'Korean',
         level: 'Intermediate (TOPIK Level 3)',
-        certLink: '',
+        certLink: '/certs/TOPIK-Cert.pdf',
     },
     {
         title: 'Thai, Japanese, Turkish',
         level: 'Elementary',
-        certLink: '',
     },
 ]
 

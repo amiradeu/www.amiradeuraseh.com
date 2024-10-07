@@ -50,6 +50,12 @@ table {
 html {
   --color-white: ${COLORS.white};
   --color-offblack: ${COLORS.offblack};
+  --color-gray-100: ${COLORS.gray[100]};
+  --color-gray-300: ${COLORS.gray[300]};
+  --color-gray-500: ${COLORS.gray[500]};
+  --color-gray-700: ${COLORS.gray[700]};
+  --color-gray-900: ${COLORS.gray[900]};
+  --color-backdrop: ${COLORS.gray[700]} / 0.8;
   --color-primary: ${COLORS.primary};
   --color-secondary: ${COLORS.secondary};
   --color-urgent: ${COLORS.urgent};
@@ -93,7 +99,7 @@ html, body, #root {
 }
 
 body {
-	background-color: var(--color-gray-100);
+	background-color: var(--color-gray-white);
   font-family: 'sans-serif';
 }
 

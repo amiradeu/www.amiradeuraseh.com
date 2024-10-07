@@ -5,11 +5,11 @@ import glsl from 'vite-plugin-glsl'
 
 export default {
     root: 'src/',
-    publicDir: '../static/',
+    publicDir: '../public/',
     base: './',
     plugins: [
-        // Restart server on static file change
-        restart({ restart: ['../static/**'] }),
+        // Restart server on public file change
+        restart({ restart: ['../public/**'] }),
 
         // React support
         react(),
