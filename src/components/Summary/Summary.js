@@ -6,7 +6,7 @@ import { SUMMARY } from '../../data'
 
 function Summary() {
     const intro = SUMMARY.main.split('Frontend Developer')
-    console.log(intro)
+
     return (
         <Wrapper>
             <Balancer>

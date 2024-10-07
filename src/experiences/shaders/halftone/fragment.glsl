@@ -65,10 +65,14 @@ void main()
     color *= light;
 
     // Halftone Shadow
-    color = halftone(color, uShadowRepetitions, vec3(0.0, -1.0, 0.0), -0.8, 1.5, uShadowColor, normal);
+    color = halftone(color, uShadowRepetitions, vec3(-1.0, -1.0, 0.0), -0.8, 1.5, uShadowColor, normal);
+
+    color = halftone(color, uShadowRepetitions, vec3(0.0, 0.0, -1.0), -0.8, 1.5, uShadowColor, normal);
 
     // Halftone Light
     color = halftone(color, uLightRepetitions, vec3(1.0, 1.0, 0.0), 0.5, 1.5, uLightColor, normal);
+
+     color = halftone(color, uLightRepetitions, vec3(0.0, 0.0, 1.0), 0.5, 1.5, uLightColor, normal);
 
     // Final color
     gl_FragColor = vec4(color, 1.0);

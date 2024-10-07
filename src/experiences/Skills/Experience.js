@@ -8,17 +8,13 @@ import {
     CuboidCollider,
 } from '@react-three/rapier'
 import * as THREE from 'three'
+import { useLocation } from 'react-router-dom'
 import { Perf } from 'r3f-perf'
-import { button, useControls } from 'leva'
+import { useControls } from 'leva'
 
 import { TECHSTACK } from '../../data'
 import halftoneVertexShader from '../shaders/halftone/vertex.glsl'
 import halftoneFragmentShader from '../shaders/halftone/fragment.glsl'
-
-// const materialParameters = {}
-// materialParameters.color = '#ff794d'
-// materialParameters.shadowColor = '#8e19b8'
-// materialParameters.lightColor = '#e5ffe0'
 
 const HalftoneMaterial = shaderMaterial(
     {
@@ -39,11 +35,10 @@ const HalftoneMaterial = shaderMaterial(
 extend({ HalftoneMaterial })
 
 export default function Experience() {
-    // DEBUG UI
-    const { perfVisible } = useControls({
-        perfVisible: true,
-    })
+    const location = useLocation()
+    const debugVisible = location.hash === '#debug'
 
+    // DEBUG UI
     const { backgroundColor } = useControls({
         backgroundColor: '#fefefe',
     })
@@ -54,9 +49,9 @@ export default function Experience() {
         shadowRepetitions,
         lightRepetitions,
     } = useControls('sphere', {
-        color: '#fefefe',
+        color: '#9faeeb',
         shadowColor: '#1a41b8',
-        lightColor: '#a0c2e8',
+        lightColor: '#fefefe',
         shadowRepetitions: {
             value: 100,
             min: 0,
@@ -94,11 +89,12 @@ export default function Experience() {
             instances.push({
                 key: 'instance_' + i,
                 position: [(Math.random() - 0.5) * length, 2 + i, 0],
-                scale: [scale, scale, scale],
+                // scale: [scale, scale, scale],
+                scale: [1.0, 1.0, 1.0],
             })
         }
 
-        console.log(instances)
+        // console.log(instances)
 
         return instances
     }, [])
@@ -115,9 +111,9 @@ export default function Experience() {
         <>
             <color args={[backgroundColor]} attach='background' />
 
-            {perfVisible && <Perf position='top-left' />}
+            {debugVisible && <Perf position='top-left' />}
 
-            <OrbitControls makeDefault />
+            {/* <OrbitControls makeDefault /> */}
 
             <Physics debug={false} gravity={[0, -9.81, 0]}>
                 {/* Sphere */}
