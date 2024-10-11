@@ -3,7 +3,6 @@ import { Leva } from 'leva'
 import { useLocation } from 'react-router-dom'
 
 import Experience from './Experience'
-import Exp from './Exp'
 
 function Skills() {
     const location = useLocation()

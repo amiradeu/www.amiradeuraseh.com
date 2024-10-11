@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import * as THREE from 'three'
 import { extend, useFrame } from '@react-three/fiber'
 import {
@@ -115,23 +115,6 @@ export default function Experience() {
             <directionalLight position={[1, 2, 3]} intensity={2.5} />
             <ambientLight intensity={0.5} />
 
-            {/* <mesh scale={2}>
-                <planeGeometry args={[1, 1, 100, 100]} />
-                <decalMaterial ref={decalRef} uDecalTexture={skillTexture} />
-            </mesh> */}
-
-            {/* decal on plane geo */}
-            {/* <mesh ref={decalMeshRef} scale={2} position={[0, 0, 1]}>
-                <planeGeometry args={[1, 1, 100, 100]} />
-
-                <meshStandardMaterial
-                    transparent={true}
-                    // map={skillTexture}
-                    displacementMap={faceDisplacementTexture}
-                    normalMap={boulderNormalTexture}
-                />
-            </mesh> */}
-
             <mesh
                 ref={lemonRef}
                 geometry={nodes.lemon.geometry}
@@ -171,10 +154,6 @@ export default function Experience() {
                     ]}
                 />
             </mesh>
-
-            {/* <primitive ref={boulderRef} object={boulder.scene} scale={2} /> */}
-
-            {/* <Clone object={boulder.scene} /> */}
         </>
     )
 }
