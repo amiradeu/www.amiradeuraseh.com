@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useMemo, useRef } from 'react'
 import * as THREE from 'three'
 import { extend, useFrame } from '@react-three/fiber'
 import {
@@ -12,6 +12,13 @@ import { useControls } from 'leva'
 
 import decalsVertexShader from '../shaders/decals/vertex.glsl'
 import decalsFragmentShader from '../shaders/decals/fragment.glsl'
+import {
+    BallCollider,
+    CuboidCollider,
+    InstancedRigidBodies,
+    Physics,
+    RigidBody,
+} from '@react-three/rapier'
 
 const DecalMaterial = shaderMaterial(
     {
@@ -51,7 +58,7 @@ export default function Experience() {
             step: 0.1,
         },
         lemon_scale: {
-            value: 10,
+            value: 30,
             min: 0.01,
             max: 50,
             step: 0.01,
@@ -82,6 +89,15 @@ export default function Experience() {
         }
     )
 
+    /**
+     * CONSTANTS
+     */
+    // invisible walls
+    const length = 5
+    const height = 15
+    const width = 1
+    const basePosition = -3
+
     // Loaders
     const loadingManager = new THREE.LoadingManager()
     const textureLoader = new THREE.TextureLoader(loadingManager)
@@ -97,11 +113,26 @@ export default function Experience() {
     const { nodes, materials } = useGLTF('/models/lemon/lemon_1k.gltf')
     // console.log(nodes)
 
+    const lemonsCount = 10
+    const instances = useMemo(() => {
+        const instances = []
+
+        for (let i = 0; i < lemonsCount; i++) {
+            instances.push({
+                key: 'instance_' + i,
+                position: [(Math.random() - 0.5) * length, 4 + i * 2, 0],
+                rotation: [0, 0, 0],
+            })
+        }
+
+        return instances
+    }, [])
+
     /**
      * ANIMATIONS
      */
     useFrame((state, delta) => {
-        if (enableAnimation) lemonRef.current.rotation.y += delta * 0.5
+        // lemonRef.current.rotation.y += delta * 0.5
     })
 
     return (
@@ -115,45 +146,112 @@ export default function Experience() {
             <directionalLight position={[1, 2, 3]} intensity={2.5} />
             <ambientLight intensity={0.5} />
 
-            <mesh
-                ref={lemonRef}
-                geometry={nodes.lemon.geometry}
-                material={materials.lemon}
-                scale={lemon_scale}
-                rotation={[
-                    lemon_rotation.x,
-                    lemon_rotation.y,
-                    lemon_rotation.z,
-                ]}
-            >
-                <Decal
-                    debug={isDebug}
-                    map={skillTexture}
-                    scale={decals_scale}
-                    rotation={[
-                        decals_rotation.x,
-                        decals_rotation.y,
-                        decals_rotation.z,
-                    ]}
-                    position={[
-                        decals_position.x,
-                        decals_position.y,
-                        decals_position.z,
-                    ]}
-                />
+            <Physics debug={isDebug} gravity={[0, -9.81, 0]}>
+                {/* Lemon */}
+                {instances.map(({ position, key }) => {
+                    return (
+                        <RigidBody
+                            key={key}
+                            colliders={false}
+                            position={position}
+                        >
+                            {/* <CuboidCollider args={[0.5, 0.5, 0.5]} /> */}
+                            {/* <InstancedRigidBodies instances={instances} colliders='ball'> */}
+                            <BallCollider args={[1]} />
+                            <mesh
+                                //ref={lemonRef}
+                                geometry={nodes.lemon.geometry}
+                                material={materials.lemon}
+                                scale={lemon_scale}
+                                // rotation={[
+                                //     lemon_rotation.x,
+                                //     lemon_rotation.y,
+                                //     lemon_rotation.z,
+                                // ]}
+                            >
+                                {/* <instancedMesh
+                        //ref={lemonRef}
+                        args={[
+                            nodes.lemon.geometry,
+                            materials.lemon,
+                            lemonsCount,
+                        ]}
+                        scale={lemon_scale}
+                    > */}
+                                <Decal
+                                    // debug={isDebug}
+                                    map={skillTexture}
+                                    scale={decals_scale}
+                                    rotation={[
+                                        decals_rotation.x,
+                                        decals_rotation.y,
+                                        decals_rotation.z,
+                                    ]}
+                                    position={[
+                                        decals_position.x,
+                                        decals_position.y,
+                                        decals_position.z,
+                                    ]}
+                                />
 
-                <Decal
-                    debug={isDebug}
-                    map={skillTexture}
-                    scale={decals_scale}
-                    rotation={[-decals_rotation.x, Math.PI, -decals_rotation.z]}
-                    position={[
-                        -decals_position.x,
-                        -decals_position.y,
-                        -decals_position.z,
-                    ]}
-                />
-            </mesh>
+                                <Decal
+                                    // debug={isDebug}
+                                    map={skillTexture}
+                                    scale={decals_scale}
+                                    rotation={[
+                                        -decals_rotation.x,
+                                        Math.PI,
+                                        -decals_rotation.z,
+                                    ]}
+                                    position={[
+                                        -decals_position.x,
+                                        -decals_position.y,
+                                        -decals_position.z,
+                                    ]}
+                                />
+                                {/* </instancedMesh> */}
+                            </mesh>
+                            {/* </InstancedRigidBodies> */}
+                        </RigidBody>
+                    )
+                })}
+
+                {/* Boundary */}
+                <RigidBody type='fixed'>
+                    {/* front */}
+                    <CuboidCollider
+                        args={[length, height, width]}
+                        position={[0, height + basePosition, width * 2]}
+                    />
+                    {/* back */}
+                    <CuboidCollider
+                        args={[length, height, width]}
+                        position={[0, height + basePosition, -width * 2]}
+                    />
+                    {/* right */}
+                    <CuboidCollider
+                        args={[width, height, 1]}
+                        position={[length + width, height + basePosition, 0]}
+                    />
+                    {/* left */}
+                    <CuboidCollider
+                        args={[width, height, 1]}
+                        position={[-(length + width), height + basePosition, 0]}
+                    />
+                    {/* bottom */}
+                    <CuboidCollider
+                        args={[length, width, width]}
+                        position={[0, basePosition, 0]}
+                        restitution={1}
+                        friction={0.3}
+                    />
+                    {/* top */}
+                    <CuboidCollider
+                        args={[length, width, width]}
+                        position={[0, height * 2 + basePosition, 0]}
+                    />
+                </RigidBody>
+            </Physics>
         </>
     )
 }
