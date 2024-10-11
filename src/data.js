@@ -55,7 +55,7 @@ export const CERTIFICATIONS = [
         courseLink: 'https://threejs-journey.com',
         author: 'Bruno Simon',
         year: '2023',
-        certLink: '/certs/Three.js-Journey-Cert.pdf',
+        certLink: 'https://threejs-journey.com/certificate/view/15484',
         description:
             'Comprehensive training in WebGL and Three.js library, covering performance optimisation, 3D modeling in Blender, GLSL shaders, GPGPU, and React Three Fibre (r3f).',
     },
@@ -64,7 +64,8 @@ export const CERTIFICATIONS = [
         courseLink: 'https://www.joyofreact.com',
         author: 'Josh W Comeau',
         year: '2024',
-        certLink: '',
+        certLink:
+            'https://courses.joshwcomeau.com/certificate/6708c9b177254c0f3dfe53f2',
         description:
             'In-depth React development training, covering advanced state management, Hooks, component API design, full stack React with Next.js, Framer Motion and MDX-based blogs.',
     },
@@ -73,7 +74,8 @@ export const CERTIFICATIONS = [
         courseLink: 'https://css-for-js.dev',
         author: 'Josh W Comeau',
         year: '2023',
-        certLink: '/certs/CSS-for-Javascript-Developers-Cert.pdf',
+        certLink:
+            'https://courses.joshwcomeau.com/certificate/651fa3556506fa37e0723728',
         description:
             'Focuses on the intricacies of modern CSS, including layout techniques, styled components, animations, and accessibility best practices.',
     },
