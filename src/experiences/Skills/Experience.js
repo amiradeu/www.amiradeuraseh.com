@@ -8,17 +8,23 @@ import {
     useGLTF,
 } from '@react-three/drei'
 import { Perf } from 'r3f-perf'
-import { useControls } from 'leva'
+import { button, useControls } from 'leva'
 
 import decalsVertexShader from '../shaders/decals/vertex.glsl'
 import decalsFragmentShader from '../shaders/decals/fragment.glsl'
 import {
     BallCollider,
+    CapsuleCollider,
     CuboidCollider,
     InstancedRigidBodies,
     Physics,
     RigidBody,
 } from '@react-three/rapier'
+
+import { TECHSTACK } from '../../data'
+import { MODELS } from '../../data'
+
+const fruit = MODELS.LEMON
 
 const DecalMaterial = shaderMaterial(
     {
@@ -50,14 +56,18 @@ export default function Experience() {
         enableAnimation: true,
     })
 
-    const { lemon_rotation, lemon_scale } = useControls('lemon', {
-        lemon_rotation: {
+    const { fruit_rotation, fruit_scale } = useControls(fruit.name, {
+        jumpButton: button(() => {
+            console.log('jump', fruitRef.current)
+            fruitRef.current.applyImpulse({ x: 0, y: 20, z: 0 })
+        }),
+        fruit_rotation: {
             value: { x: 0, y: 0, z: 0.2 },
             min: 0,
             max: Math.PI * 2,
             step: 0.1,
         },
-        lemon_scale: {
+        fruit_scale: {
             value: 30,
             min: 0.01,
             max: 50,
@@ -93,10 +103,10 @@ export default function Experience() {
      * CONSTANTS
      */
     // invisible walls
-    const length = 5
-    const height = 15
-    const width = 1
-    const basePosition = -3
+    const length = 15
+    const height = TECHSTACK.length * 3
+    const width = 3
+    const basePosition = 3
 
     // Loaders
     const loadingManager = new THREE.LoadingManager()
@@ -106,22 +116,27 @@ export default function Experience() {
     const skillTexture = textureLoader.load('/skills/threejs.png')
 
     /**
-     * LEMON MODEL
-     * source: https://polyhaven.com/a/lemon
+     * FRUIT MODEL
      */
-    const lemonRef = useRef()
-    const { nodes, materials } = useGLTF('/models/lemon/lemon_1k.gltf')
+    const fruitRef = useRef()
+    const { nodes, materials } = useGLTF(
+        `/models/${fruit.name}/${fruit.name}.gltf`
+    )
+    fruit.nodes = nodes
+    fruit.materials = materials
     // console.log(nodes)
 
-    const lemonsCount = 10
+    const fruitCount = TECHSTACK.length
+    // const fruitCount = 1
     const instances = useMemo(() => {
         const instances = []
 
-        for (let i = 0; i < lemonsCount; i++) {
+        for (let i = 0; i < fruitCount; i++) {
             instances.push({
                 key: 'instance_' + i,
                 position: [(Math.random() - 0.5) * length, 4 + i * 2, 0],
                 rotation: [0, 0, 0],
+                imageUrl: TECHSTACK[i].image,
             })
         }
 
@@ -132,8 +147,13 @@ export default function Experience() {
      * ANIMATIONS
      */
     useFrame((state, delta) => {
-        // lemonRef.current.rotation.y += delta * 0.5
+        // fruitRef.current.rotation.y += delta * 0.5
     })
+
+    // const jump = () => {
+    //     console.log('jump', fruitRef.current)
+    //     fruitRef.current.applyImpulse({ x: 0, y: 10, z: 0 })
+    // }
 
     return (
         <>
@@ -147,40 +167,49 @@ export default function Experience() {
             <ambientLight intensity={0.5} />
 
             <Physics debug={isDebug} gravity={[0, -9.81, 0]}>
-                {/* Lemon */}
-                {instances.map(({ position, key }) => {
+                {/* Fruit */}
+                {instances.map(({ position, imageUrl, key }) => {
                     return (
                         <RigidBody
                             key={key}
+                            ref={fruitRef}
                             colliders={false}
                             position={position}
                         >
-                            {/* <CuboidCollider args={[0.5, 0.5, 0.5]} /> */}
+                            {/* <CuboidCollider
+                                args={[0.5, 0.5, 0.5]}
+                            /> */}
                             {/* <InstancedRigidBodies instances={instances} colliders='ball'> */}
-                            <BallCollider args={[1]} />
+                            {/* <BallCollider args={[1]} /> */}
+                            <CapsuleCollider
+                                args={[0.5, 1]}
+                                restitution={0}
+                                friction={10}
+                            />
                             <mesh
-                                //ref={lemonRef}
-                                geometry={nodes.lemon.geometry}
-                                material={materials.lemon}
-                                scale={lemon_scale}
+                                geometry={fruit.nodes.lemon.geometry}
+                                material={fruit.materials.lemon}
+                                scale={fruit_scale}
                                 // rotation={[
-                                //     lemon_rotation.x,
-                                //     lemon_rotation.y,
-                                //     lemon_rotation.z,
+                                //     fruit_rotation.x,
+                                //     fruit_rotation.y,
+                                //     fruit_rotation.z,
                                 // ]}
                             >
                                 {/* <instancedMesh
-                        //ref={lemonRef}
+                        //ref={fruitRef}
                         args={[
                             nodes.lemon.geometry,
                             materials.lemon,
-                            lemonsCount,
+                            fruitCount,
                         ]}
-                        scale={lemon_scale}
+                        scale={fruit_scale}
                     > */}
                                 <Decal
                                     // debug={isDebug}
-                                    map={skillTexture}
+                                    map={textureLoader.load(
+                                        `/skills/${imageUrl}`
+                                    )}
                                     scale={decals_scale}
                                     rotation={[
                                         decals_rotation.x,
@@ -196,7 +225,9 @@ export default function Experience() {
 
                                 <Decal
                                     // debug={isDebug}
-                                    map={skillTexture}
+                                    map={textureLoader.load(
+                                        `/skills/${imageUrl}`
+                                    )}
                                     scale={decals_scale}
                                     rotation={[
                                         -decals_rotation.x,
@@ -217,39 +248,107 @@ export default function Experience() {
                 })}
 
                 {/* Boundary */}
-                <RigidBody type='fixed'>
-                    {/* front */}
-                    <CuboidCollider
-                        args={[length, height, width]}
-                        position={[0, height + basePosition, width * 2]}
-                    />
-                    {/* back */}
-                    <CuboidCollider
-                        args={[length, height, width]}
-                        position={[0, height + basePosition, -width * 2]}
-                    />
-                    {/* right */}
-                    <CuboidCollider
-                        args={[width, height, 1]}
-                        position={[length + width, height + basePosition, 0]}
-                    />
-                    {/* left */}
-                    <CuboidCollider
-                        args={[width, height, 1]}
-                        position={[-(length + width), height + basePosition, 0]}
-                    />
-                    {/* bottom */}
-                    <CuboidCollider
-                        args={[length, width, width]}
-                        position={[0, basePosition, 0]}
-                        restitution={1}
-                        friction={0.3}
-                    />
-                    {/* top */}
-                    <CuboidCollider
-                        args={[length, width, width]}
-                        position={[0, height * 2 + basePosition, 0]}
-                    />
+
+                {/* front */}
+                <RigidBody
+                    type='fixed'
+                    restitution={0.1}
+                    friction={10}
+                    position={[0, height / 2 - basePosition, width]}
+                >
+                    <mesh>
+                        <boxGeometry args={[length, height, width]} />
+                        <meshBasicMaterial opacity={0} transparent />
+                    </mesh>
+                </RigidBody>
+
+                {/* back */}
+                <RigidBody
+                    type='fixed'
+                    restitution={0.1}
+                    friction={10}
+                    position={[0, height / 2 - basePosition, -width]}
+                >
+                    <mesh>
+                        <boxGeometry args={[length, height, width]} />
+                        <meshBasicMaterial
+                            color='yellowgreen'
+                            opacity={0}
+                            transparent
+                        />
+                    </mesh>
+                </RigidBody>
+
+                {/* left */}
+                <RigidBody
+                    type='fixed'
+                    position={[
+                        -(length / 2 + width / 2),
+                        height / 2 - basePosition,
+                        0,
+                    ]}
+                >
+                    <mesh>
+                        <boxGeometry args={[width, height, width]} />
+                        <meshBasicMaterial
+                            color='blue'
+                            opacity={0}
+                            transparent
+                        />
+                    </mesh>
+                </RigidBody>
+
+                {/* right */}
+                <RigidBody
+                    type='fixed'
+                    position={[
+                        length / 2 + width / 2,
+                        height / 2 - basePosition,
+                        0,
+                    ]}
+                >
+                    <mesh>
+                        <boxGeometry args={[width, height, width]} />
+                        <meshBasicMaterial
+                            color='blue'
+                            opacity={0}
+                            transparent
+                        />
+                    </mesh>
+                </RigidBody>
+
+                {/* bottom */}
+                <RigidBody
+                    type='fixed'
+                    restitution={0.1}
+                    friction={10}
+                    position={[0, -basePosition - width / 2, 0]}
+                >
+                    <mesh>
+                        <boxGeometry args={[length, width, width]} />
+                        <meshBasicMaterial
+                            color='pink'
+                            opacity={0}
+                            transparent
+                        />
+                    </mesh>
+                </RigidBody>
+
+                {/* top */}
+                <RigidBody
+                    type='fixed'
+                    restitution={0.1}
+                    friction={10}
+                    position={[0, height - width, 0]}
+                >
+                    <mesh>
+                        <boxGeometry args={[length, width, width]} />
+                        <meshBasicMaterial
+                            color='pink'
+                            opacity={0}
+                            transparent
+                        />
+                    </mesh>
                 </RigidBody>
             </Physics>
         </>

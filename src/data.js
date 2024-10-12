@@ -109,81 +109,132 @@ export const LANGUAGES = [
     },
 ]
 
+export const MODELS = {
+    LEMON: {
+        name: 'lemon',
+        source: 'https://polyhaven.com/a/lemon',
+        attributes: {
+            scale: 30,
+            rotation: [0, 0, 0.2],
+        },
+    },
+    APPLE: {
+        name: 'apple',
+        source: 'https://polyhaven.com/a/food_apple_01',
+    },
+    LIME: {
+        name: 'lime',
+        source: 'https://polyhaven.com/a/food_lime_01',
+    },
+    POMEGRATE: {
+        name: 'pomegrate',
+        source: 'https://polyhaven.com/a/food_pomegranate_01',
+    },
+    KIWI: {
+        name: 'kiwi',
+        source: 'https://polyhaven.com/a/food_kiwi_01',
+    },
+    AVOCADO: {
+        name: 'avocado',
+        source: 'https://polyhaven.com/a/food_avocado_01',
+    },
+}
+
 export const TECHSTACK = [
     {
         skill: 'ThreeJS',
         level: 3,
+        image: 'threejs.svg',
+        attributes: {
+            scale: 0.06,
+            rotation: [0, 0, 0.7],
+            position: [0, 0, 0.04],
+        },
+        model: MODELS.LEMON,
     },
     {
         skill: 'React',
+        image: 'react.svg',
         level: 3,
     },
     {
         skill: 'Javascript',
+        image: 'javascript.svg',
         level: 3,
     },
     {
         skill: 'CSS',
+        image: 'css.svg',
         level: 3,
     },
     {
         skill: 'styled-component',
+        image: 'styled-component.svg',
         level: 3,
     },
     {
         skill: 'git',
+        image: 'git.svg',
         level: 3,
     },
     {
         skill: 'Blender',
+        image: 'blender.svg',
         level: 3,
     },
     {
         skill: 'GLSL',
+        image: 'glsl.svg',
         level: 3,
     },
     {
         skill: 'Gsap',
+        image: 'gsap.svg',
         level: 2,
     },
     {
         skill: 'NextJS',
+        image: 'nextjs.svg',
         level: 2,
     },
     {
         skill: 'Node.js',
-        level: 2,
-    },
-    {
-        skill: 'MDX',
+        image: 'nodejs.svg',
         level: 2,
     },
     {
         skill: 'VueJS',
+        image: 'vuejs.svg',
         level: 2,
     },
     {
         skill: 'Figma',
+        image: 'figma.svg',
         level: 1,
     },
     {
         skill: 'Illustrator',
+        image: 'illustrator.svg',
         level: 1,
     },
     {
         skill: 'C++',
+        image: 'c++.svg',
         level: 1,
     },
     {
-        skill: 'Java',
+        skill: 'Android',
+        image: 'android.svg',
         level: 1,
     },
     {
         skill: 'Python',
+        image: 'python.svg',
         level: 1,
     },
     {
         skill: 'Web3',
+        image: 'web3.svg',
         level: 1,
     },
 ]
