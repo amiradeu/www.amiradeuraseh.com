@@ -1,12 +1,13 @@
+import { useEffect, useRef, useState } from 'react'
 import * as THREE from 'three'
+import { extend, useFrame } from '@react-three/fiber'
+import { OrbitControls, shaderMaterial } from '@react-three/drei'
 import { Perf } from 'r3f-perf'
 import { useControls } from 'leva'
-import { OrbitControls, shaderMaterial } from '@react-three/drei'
-import { extend, useFrame } from '@react-three/fiber'
 
 import waterVertexShader from '../shaders/water/vertex.glsl'
 import waterFragmentShader from '../shaders/water/fragment.glsl'
-import { useEffect, useRef } from 'react'
+import useMousePosition from '../../hooks/use-mouse-position'
 
 const WaterMaterial = shaderMaterial(
     {
@@ -24,6 +25,9 @@ const WaterMaterial = shaderMaterial(
         uSurfaceColor: new THREE.Color('#151c37'),
         uColorOffset: 0.925,
         uColorMultiplier: 1,
+
+        uCursorX: 0,
+        uCursorY: 0,
     },
     waterVertexShader,
     waterFragmentShader
@@ -32,6 +36,12 @@ const WaterMaterial = shaderMaterial(
 extend({ WaterMaterial })
 
 export default function Experience() {
+    /**
+     * Cursor
+     */
+    const mousePosition = useMousePosition()
+    console.log(mousePosition.x, mousePosition.y)
+
     /**
      * ADDRESS BAR
      */
@@ -53,6 +63,10 @@ export default function Experience() {
      */
     useFrame((state, delta) => {
         waterMaterialRef.current.uTime += delta
+        waterMaterialRef.current.uCursorX = mousePosition.x
+        waterMaterialRef.current.uCursorY = mousePosition.y
+
+        // console.log(mousePosition.y)
     })
 
     // Delete unused attributes for performace
@@ -69,7 +83,7 @@ export default function Experience() {
             {isDebug && <OrbitControls makeDefault />}
 
             <mesh rotation={[-Math.PI * 0.5, 0, 0]}>
-                <planeGeometry ref={planeRef} args={[2, 2, 512, 512]} />
+                <planeGeometry ref={planeRef} args={[5, 5, 512, 512]} />
                 <waterMaterial ref={waterMaterialRef} />
             </mesh>
 

@@ -2,6 +2,8 @@ uniform vec3 uDepthColor;
 uniform vec3 uSurfaceColor;
 uniform float uColorOffset;
 uniform float uColorMultiplier;
+uniform float uCursorX;
+uniform float uCursorY;
 
 varying float vElevation;
 varying vec3 vNormal;
@@ -14,6 +16,10 @@ void main()
     vec3 viewDirection = normalize(vPosition - cameraPosition);
     vec3 normal = normalize(vNormal);
 
+    // Cursor
+    float cursorX = uCursorX * 2.0;
+    float cursorY = uCursorY * 2.0;
+
     // Base color
     float mixStrength = (vElevation + uColorOffset) * uColorMultiplier;
     mixStrength = smoothstep(0.0, 1.0, mixStrength);
@@ -25,7 +31,7 @@ void main()
         vec3(1.0),                  // light color
         10.0,                        // light intensity
         normal,                     // normal
-        vec3(0.0, 0.25, 0.0),       // light position
+        vec3(cursorX, 0.25, cursorY),       // light position
         viewDirection,              // view direction
         30.0,                        // specular power
         vPosition,                  // position

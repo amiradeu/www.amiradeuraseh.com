@@ -15,7 +15,7 @@ function RagingSea() {
                     fov: 45,
                     near: 0.1,
                     far: 200,
-                    position: [1, 1, 1],
+                    position: [0, 1, 2],
                 }}
             >
                 <Experience />
