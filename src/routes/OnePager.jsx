@@ -5,7 +5,9 @@ import Navbar from '../components/Navbar'
 import Summary from '../components/Summary'
 import WorkGrid from '../components/WorkGrid/WorkGrid'
 import CertsGrid from '../components/CertsGrid/CertsGrid'
+import AwardGrid from '../components/AwardGrid/AwardGrid'
 import LanguageGrid from '../components/LanguageGrid/LanguageGrid'
+
 import Education from '../components/Education'
 import Footer from '../components/Footer'
 
@@ -20,18 +22,22 @@ function OnePager() {
             </Header>
             <Main>
                 {/* <a href='skills'>Go to Skills</a> */}
+                <Section>
+                    <Title>Work Experience</Title>
+                    <WorkGrid />
+                </Section>
                 <WrapperExperience>
                     <Experience>
                         <Skills />
                     </Experience>
                 </WrapperExperience>
                 <Section>
-                    <Title>Work Experience</Title>
-                    <WorkGrid />
-                </Section>
-                <Section>
                     <Title>Certifications</Title>
                     <CertsGrid />
+                </Section>
+                <Section>
+                    <Title>Awards</Title>
+                    <AwardGrid />
                 </Section>
                 <Section>
                     <Title>Education</Title>

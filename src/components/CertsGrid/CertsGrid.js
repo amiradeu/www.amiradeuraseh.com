@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { CERTIFICATIONS } from '../../data'
-import CertCard from '../CertsCard/CertsCard'
+import CertCard from '../CertsCard'
 
 function CertsGrid() {
     return (

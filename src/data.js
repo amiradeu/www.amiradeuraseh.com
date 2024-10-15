@@ -81,6 +81,23 @@ export const CERTIFICATIONS = [
     },
 ]
 
+export const AWARDS = [
+    {
+        title: 'Zoohackathon KL by United States Embassy',
+        year: 2018,
+        description:
+            'Champion. Developed Wildcam, a Tensorflow-based application for identifying wildlife species and populations from live camera streams.',
+        link: 'https://www.flickr.com/photos/usembassykl/albums/72157701868447451/',
+    },
+    {
+        title: 'Motorola MotoInnoCup Competition',
+        year: 2016,
+        description:
+            'Champion. Developed Fully Automated Controller for External Defibrillator (FACED) to detect Ventricular Fibrillation (VF) in cardiac arrest situation and establish appropriate shock levels.',
+        link: '/docs/Motorola-MotoInnoCup.jpeg',
+    },
+]
+
 export const EDUCATION = {
     institute: 'Universiti Putra Malaysia (UPM), Serdang',
     bachelor: 'Bachelor of Computer & Communication Systems Engineering',
