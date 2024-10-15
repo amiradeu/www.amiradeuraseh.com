@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import MaxWidthWrapper from '../components/MaxWidthWrapper/MaxWidthWrapper'
 import Navbar from '../components/Navbar'
 import Summary from '../components/Summary'
+import PDFResume from '../components/PDFResume'
 import WorkGrid from '../components/WorkGrid/WorkGrid'
 import CertsGrid from '../components/CertsGrid/CertsGrid'
 import AwardGrid from '../components/AwardGrid/AwardGrid'
@@ -19,6 +20,7 @@ function OnePager() {
             <Header>
                 <Navbar />
                 <Summary />
+                <PDFResume />
             </Header>
             <Main>
                 {/* <a href='skills'>Go to Skills</a> */}
@@ -53,7 +55,9 @@ function OnePager() {
     )
 }
 
-const Header = styled.header``
+const Header = styled.header`
+    margin-block-end: 4rem;
+`
 const Main = styled.main`
     margin-block-end: 4rem;
 `

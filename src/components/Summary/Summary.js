@@ -32,7 +32,7 @@ const Main = styled.h1`
 `
 const Sub = styled.h2`
     margin-bottom: 1em;
-    font-size: clamp(1rem, 4vw + 1rem, 1.2rem);
+    font-size: clamp(1rem, 4vw + 1rem, 1.8rem);
 `
 
 export default Summary
