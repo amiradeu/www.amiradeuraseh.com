@@ -8,6 +8,7 @@ import { useControls } from 'leva'
 import waterVertexShader from '../shaders/water/vertex.glsl'
 import waterFragmentShader from '../shaders/water/fragment.glsl'
 import useMousePosition from '../../hooks/use-mouse-position'
+import useIdle from '../../hooks/use-idle'
 
 const WaterMaterial = shaderMaterial(
     {
@@ -40,7 +41,8 @@ export default function Experience() {
      * Cursor
      */
     const mousePosition = useMousePosition()
-    console.log(mousePosition.x, mousePosition.y)
+
+    const isIdle = useIdle(10)
 
     /**
      * ADDRESS BAR
@@ -62,11 +64,27 @@ export default function Experience() {
      * TIME
      */
     useFrame((state, delta) => {
+        // update shader uniform time
         waterMaterialRef.current.uTime += delta
-        waterMaterialRef.current.uCursorX = mousePosition.x
-        waterMaterialRef.current.uCursorY = mousePosition.y
 
-        // console.log(mousePosition.y)
+        const currentX = waterMaterialRef.current.uCursorX
+        const currentY = waterMaterialRef.current.uCursorY
+
+        // during idle, position goes back to center (0,0) slowly
+        if (isIdle) {
+            // console.log('going back to 0,0')
+            waterMaterialRef.current.uCursorX -= currentX * delta * 0.4
+            waterMaterialRef.current.uCursorY -= currentY * delta * 0.4
+        } else {
+            // small increments to destination position
+            const shiftX = (mousePosition.x - currentX) * delta
+            const shiftY = (mousePosition.y - currentY) * delta
+
+            waterMaterialRef.current.uCursorX += shiftX
+            waterMaterialRef.current.uCursorY += shiftY
+        }
+
+        // console.log(mousePosition.x, mousePosition.y)
     })
 
     // Delete unused attributes for performace
