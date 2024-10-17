@@ -34,6 +34,13 @@ export const WORKS = [
             'At Sony, Amira played a key role in developing and maintaining Android TV Java applications for automation and testing. She developed internal software for automatic picture quality testing using Sony’s proprietary hardware sensors and Android native C++. Additionally, she helped the team in integrating Amazon Alexa’s Voice Assistant API to offer smart TV features.',
     },
     {
+        title: 'Developer Intern',
+        company: 'Sony EMCS Malaysia',
+        year: '2018',
+        description:
+            'As an intern with Sony, Amira explored the usage of Amazon Alexa with smart TV. She provided a working proof of concept to control TV features with Alexa Echo device utilising a combination of Raspbian OS, infrared sensor, Amazon Web Services (AWS) and Alexa Skill Kit (ASK).',
+    },
+    {
         title: 'Web Developer',
         company: 'SME Corporation Malaysia',
         year: '2017 - 2018',
