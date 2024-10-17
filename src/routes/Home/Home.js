@@ -5,17 +5,22 @@ import RagingSea from '../../experiences/RagingSea'
 function Home() {
     return (
         <>
-            <Wrapper>
+            <ExperienceWrapper>
                 <RagingSea />
-            </Wrapper>
+            </ExperienceWrapper>
             <LinkWrapper>
                 <Link href='/resume'>See Resume</Link>
             </LinkWrapper>
+            <MobileWrapper>
+                <MobileTap>
+                    Tap anywhere on screen to move the light ✨
+                </MobileTap>
+            </MobileWrapper>
         </>
     )
 }
 
-const Wrapper = styled.div`
+const ExperienceWrapper = styled.div`
     position: fixed;
     top: 0;
     left: 0;
@@ -44,4 +49,23 @@ const Link = styled.a`
         color: var(--color-secondary);
     }
 `
+
+const MobileWrapper = styled.div`
+    display: none;
+
+    @media (hover: none), (pointer: course) {
+        display: block;
+        position: absolute;
+        bottom: 16px;
+        left: 0;
+        width: 100%;
+    }
+`
+
+const MobileTap = styled.p`
+    color: var(--color-gray-300);
+    text-align: center;
+    font-size: var(--small-text-size);
+`
+
 export default Home

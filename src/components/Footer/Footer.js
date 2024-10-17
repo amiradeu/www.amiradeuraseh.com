@@ -18,7 +18,7 @@ const Wrapper = styled.footer`
 
     padding-block: 1em;
     border-top: 1px solid var(--color-primary);
-    background-color: var(--color-white);
+    background-color: var(--color-gray-100);
 `
 
 export default Footer

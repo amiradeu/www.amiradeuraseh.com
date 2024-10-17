@@ -106,7 +106,7 @@ export default function Experience() {
     const length = 15
     const height = TECHSTACK.length * 3
     const width = 3
-    const basePosition = 3
+    const basePosition = 5
 
     // Loaders
     const loadingManager = new THREE.LoadingManager()

@@ -16,42 +16,38 @@ import Skills from '../experiences/Skills'
 
 function OnePager() {
     return (
-        <MaxWidthWrapper>
-            <Header>
-                <Navbar />
-                <Summary />
-                <PDFResume />
-            </Header>
-            <Main>
-                {/* <a href='skills'>Go to Skills</a> */}
-                <Section>
-                    <Title>Work Experience</Title>
-                    <WorkGrid />
-                </Section>
-                <WrapperExperience>
-                    <Experience>
-                        <Skills />
-                    </Experience>
-                </WrapperExperience>
-                <Section>
-                    <Title>Certifications</Title>
-                    <CertsGrid />
-                </Section>
-                <Section>
-                    <Title>Awards</Title>
-                    <AwardGrid />
-                </Section>
-                <Section>
-                    <Title>Education</Title>
-                    <Education />
-                </Section>
-                <Section>
-                    <Title>Languages</Title>
-                    <LanguageGrid />
-                </Section>
-            </Main>
-            <Footer />
-        </MaxWidthWrapper>
+        <>
+            <MaxWidthWrapper>
+                <Header>
+                    <Navbar />
+                    <Summary />
+                    <PDFResume />
+                </Header>
+                <Main>
+                    <Section>
+                        <Title>Work Experience</Title>
+                        <WorkGrid />
+                    </Section>
+                    <Section>
+                        <Title>Certifications</Title>
+                        <CertsGrid />
+                    </Section>
+                    <Section>
+                        <Title>Awards</Title>
+                        <AwardGrid />
+                    </Section>
+                    <Section>
+                        <Title>Education</Title>
+                        <Education />
+                    </Section>
+                    <Section>
+                        <Title>Languages</Title>
+                        <LanguageGrid />
+                    </Section>
+                </Main>
+                <Footer />
+            </MaxWidthWrapper>
+        </>
     )
 }
 
@@ -70,14 +66,12 @@ const Title = styled.h2`
     font-size: clamp(1.4rem, 4vw + 1rem, 2.8rem);
 `
 
-const WrapperExperience = styled.div`
-    margin-inline: -32px;
-    margin-block: 16px;
-`
-
-const Experience = styled.div`
-    position: relative;
-    height: 500px;
+const ExperienceWrapper = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
 `
 
 export default OnePager

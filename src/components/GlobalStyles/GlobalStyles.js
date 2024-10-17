@@ -99,7 +99,7 @@ html, body, #root {
 }
 
 body {
-	background-color: var(--color-gray-white);
+	background-color: var(--color-gray-100);
   font-family: 'sans-serif';
 }
 
@@ -109,6 +109,7 @@ h1, h2, h3, h4, h5, h6, p {
   font-weight: 400;
   font-style: normal;
   line-height: var(--heading-line-height);
+
 }
 
 h3 {
