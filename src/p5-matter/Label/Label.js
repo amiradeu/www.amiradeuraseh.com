@@ -25,6 +25,7 @@ export class Label {
         this.width = this.word.length * 25
         this.height = 60
         this.corner = 60
+        this.stroke = 2
 
         this.createBody()
     }
@@ -133,7 +134,7 @@ export class Label {
             this.colorLightness
         )
         sketch.stroke(this.debug.textColor)
-        sketch.strokeWeight(3)
+        sketch.strokeWeight(this.stroke)
         sketch.rect(0, 0, this.width, this.height, this.corner)
 
         // text
@@ -155,7 +156,7 @@ export class Label {
                 this.colorLightness
             )
             sketch.stroke(this.debug.textColor)
-            sketch.strokeWeight(3)
+            sketch.strokeWeight(this.stroke)
             sketch.rect(this.width / 2 + 10, 0, 50, 50, this.corner)
             sketch.noStroke()
             sketch.fill(this.debug.textColor)
@@ -181,7 +182,7 @@ export class Label {
                 this.colorLightness
             )
             sketch.stroke(this.debug.textColor)
-            sketch.strokeWeight(3)
+            sketch.strokeWeight(this.stroke)
             sketch.rect(
                 this.width / 2,
                 this.height / 2 + padding,
