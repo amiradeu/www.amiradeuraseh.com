@@ -1,33 +1,23 @@
 {
     "name": "www.amiradeuraseh.com",
+    "private": true,
     "version": "0.0.0",
-    "description": "personal portfolio",
     "type": "module",
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "deploy": "vercel --prod",
-        "new-component": "new-component"
-    },
-    "dependencies": {
-        "@react-three/drei": "^9.114.0",
-        "@react-three/fiber": "^8.16.8",
-        "@react-three/rapier": "1.4",
-        "leva": "^0.9.34",
-        "r3f-perf": "^7.2.2",
-        "react": "18.2",
-        "react-dom": "18.2",
-        "react-router-dom": "^6.26.2",
-        "react-wrap-balancer": "^1.1.1",
-        "styled-components": "^6.1.8",
-        "three": "^0.166.1",
-        "vite-plugin-glsl": "^1.3.0"
+        "deploy": "vercel --prod"
     },
     "devDependencies": {
-        "@vitejs/plugin-react": "^4.3.1",
-        "new-component": "5.0.2",
-        "vercel": "^34.2.0",
-        "vite": "^5.2.11",
-        "vite-plugin-restart": "^0.4.0"
+        "vite": "^5.3.3",
+        "vite-plugin-glsl": "^1.3.0",
+        "vite-plugin-restart": "^0.4.1",
+        "vercel": "^40.1.0"
+    },
+    "dependencies": {
+        "matter-js": "^0.20.0",
+        "p5": "^1.11.1",
+        "three": "^0.166.1",
+        "tweakpane": "^4.0.5"
     }
 }
