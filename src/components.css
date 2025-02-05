@@ -95,6 +95,12 @@ section {
     border-radius: 18px;
 }
 
+@media (max-width: 550px) {
+    .projects {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* WORKS */
 .work-card {
     display: flex;
@@ -114,6 +120,15 @@ section {
     content: ' –';
 }
 
+@media (max-width: 550px) {
+    .work-card {
+        flex-direction: column;
+    }
+
+    .work-title::after {
+        content: '';
+    }
+}
 /* SOCIALS */
 .socials ul {
     display: flex;

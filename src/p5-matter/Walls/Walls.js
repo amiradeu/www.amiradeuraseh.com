@@ -9,6 +9,12 @@ export class Walls {
         this.height = height
         this.thickness = 2
 
+        // physics
+        // adding offset so drawing is not partially cutoff
+        this.offsetPhysics = 6
+        this.widthPhysics = this.width - this.offsetPhysics
+        this.heightPhysics = this.height - this.offsetPhysics
+
         this.createBody()
     }
 
@@ -18,8 +24,8 @@ export class Walls {
             // top
             Bodies.rectangle(
                 this.width / 2,
-                this.thickness / 2,
-                this.width,
+                this.thickness / 2 + this.offsetPhysics / 2,
+                this.widthPhysics,
                 this.thickness,
                 { isStatic: true }
             ),
@@ -27,27 +33,27 @@ export class Walls {
             // bottom
             Bodies.rectangle(
                 this.width / 2,
-                this.height - this.thickness / 2,
-                this.width,
+                this.height - this.thickness / 2 - this.offsetPhysics / 2,
+                this.widthPhysics,
                 this.thickness,
                 { isStatic: true }
             ),
 
             // left
             Bodies.rectangle(
-                this.thickness / 2,
+                this.thickness / 2 + this.offsetPhysics / 2,
                 this.height / 2,
                 this.thickness,
-                this.height,
+                this.heightPhysics,
                 { isStatic: true }
             ),
 
             // right
             Bodies.rectangle(
-                this.width - this.thickness / 2,
+                this.width - this.thickness / 2 - this.offsetPhysics / 2,
                 this.height / 2,
                 this.thickness,
-                this.height,
+                this.heightPhysics,
                 { isStatic: true }
             ),
         ])

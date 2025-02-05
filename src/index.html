@@ -7,9 +7,9 @@
         <link rel="stylesheet" href="./style.css" />
     </head>
     <body>
-        <main>
-            <header>
-                <nav>
+        <main role="main">
+            <header role="banner">
+                <nav role="navigation">
                     <ul>
                         <li class="active"><a href="#home">Home</a></li>
                         <li><a href="#about">About</a></li>
@@ -19,7 +19,7 @@
                 </nav>
             </header>
             <div class="content">
-                <section id="index"></section>
+                <!-- <section id="index"></section> -->
                 <section id="about">
                     <div class="writing">
                         <span
@@ -171,7 +171,7 @@
                     </div>
                 </section>
             </div>
-            <footer></footer>
+            <footer role="contentinfo"></footer>
         </main>
         <div class="canvases-wrapper">
             <div class="p5-canvas-wrapper">
@@ -179,7 +179,7 @@
             </div>
             <div class="matter-canvas-wrapper"></div>
         </div>
-        <!-- <canvas class="webgl"></canvas> -->
+        <canvas class="webgl"></canvas>
 
         <script type="module" src="./script.js"></script>
         <script type="module" src="./p5-matter/script.js"></script>

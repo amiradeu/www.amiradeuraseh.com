@@ -72,6 +72,9 @@ h6 {
     top: 0;
     left: 0;
     outline: none;
+
+    /* Disable webgl */
+    visibility: hidden;
 }
 
 /* 2D Canvas */
@@ -83,6 +86,12 @@ h6 {
 
     /* allow canvas to be positioned absolute to this */
     position: relative;
+}
+
+@media (max-width: 550px) {
+    .canvases-wrapper {
+        height: 70vh;
+    }
 }
 
 .matter-canvas-wrapper,
