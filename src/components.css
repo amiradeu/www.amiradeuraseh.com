@@ -36,6 +36,10 @@ nav .active a {
     grid-column: 2;
 }
 
+section {
+    margin: 16px 0;
+}
+
 .writing {
     display: flex;
     max-width: 60ch;
@@ -47,18 +51,18 @@ nav .active a {
     margin: 18px 0;
 }
 
-/* WORK */
-#work {
+/* PROJECTS */
+.projects {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
 }
 
-.work-card {
+.project-card {
     position: relative;
 }
 
-.work-card-info {
+.project-card-info {
     position: absolute;
     top: 0;
     left: 0;
@@ -68,27 +72,46 @@ nav .active a {
     color: white;
 }
 
-.work-card ul {
+.project-card ul {
     display: flex;
     gap: 4px;
     text-transform: uppercase;
 }
 
-.work-card ul li:not(:first-child)::before {
+.project-card ul li:not(:first-child)::before {
     content: '/ ';
 }
 
-.work-card a {
+.project-card a {
     text-decoration: underline;
 }
 
-.work-card img {
+.project-card img {
     width: 100%;
 }
 
-.work-video {
+.project-video {
     width: 100%;
     border-radius: 18px;
+}
+
+/* WORKS */
+.work-card {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 8px;
+
+    padding: 8px 0;
+    border-bottom: 1px solid black;
+}
+
+.work-card:first-of-type {
+    border-top: 1px solid black;
+}
+
+.work-title::after {
+    content: ' –';
 }
 
 /* SOCIALS */
