@@ -72,6 +72,9 @@ h6 {
     top: 0;
     left: 0;
     outline: none;
+
+    /* Disable webgl */
+    visibility: hidden;
 }
 
 /* 2D Canvas */
