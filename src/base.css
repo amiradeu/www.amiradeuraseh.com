@@ -85,6 +85,12 @@ h6 {
     position: relative;
 }
 
+@media (max-width: 550px) {
+    .canvases-wrapper {
+        height: 70vh;
+    }
+}
+
 .matter-canvas-wrapper,
 .matter-canvas-wrapper canvas {
     /* overlay canvas on top */
