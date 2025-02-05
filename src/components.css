@@ -78,23 +78,11 @@ nav .active a {
     width: 100%;
 }
 
-/* GITHUB */
-.github {
-    position: fixed;
-    bottom: 16px;
-    right: 16px;
-}
-
-.github a {
+/* SOCIALS */
+.socials ul {
     display: flex;
-    padding: 0.4em 1em;
-    text-decoration: none;
-    border-radius: 1em;
-
-    background-color: white;
-    color: black;
-}
-
-.github a:hover {
+    justify-content: center;
+    gap: 12px;
+    margin: 16px 0;
     text-decoration: underline;
 }
