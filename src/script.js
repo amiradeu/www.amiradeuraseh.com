@@ -17,6 +17,8 @@ shaderGUI.addBinding(guiTest, 'x', {
     min: 0,
     max: 10,
 })
+// remove gui
+gui.dispose()
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
