@@ -1,0 +1,100 @@
+/* MAIN */
+main {
+    isolation: isolate;
+    margin-bottom: 32px;
+}
+
+/* HEADER */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 64px;
+}
+
+nav ul {
+    display: flex;
+    gap: 12px;
+    padding: 8px;
+    border: 1px solid black;
+    border-radius: 12px;
+}
+
+nav a:hover,
+nav .active a {
+    text-decoration: underline;
+}
+
+/* CONTENT */
+.content {
+    display: grid;
+    grid-template-columns: 1fr minmax(auto, 1040px) 1fr;
+    column-gap: 32px;
+}
+
+.content > * {
+    grid-column: 2;
+}
+
+.writing {
+    display: flex;
+    max-width: 70ch;
+    margin: 0px auto;
+}
+
+#about .writing p {
+    font-size: 18px;
+    margin: 18px 0;
+}
+
+/* WORK */
+#work {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.work-card {
+    padding: 1rem;
+    border: 1px solid black;
+    border-radius: 12px;
+}
+
+.work-card ul {
+    display: flex;
+    gap: 4px;
+    text-transform: uppercase;
+}
+
+.work-card ul li:not(:first-child)::before {
+    content: '/ ';
+}
+
+.work-card a {
+    text-decoration: underline;
+}
+
+.work-card img {
+    width: 100%;
+}
+
+/* GITHUB */
+.github {
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+}
+
+.github a {
+    display: flex;
+    padding: 0.4em 1em;
+    text-decoration: none;
+    border-radius: 1em;
+
+    background-color: white;
+    color: black;
+}
+
+.github a:hover {
+    text-decoration: underline;
+}
