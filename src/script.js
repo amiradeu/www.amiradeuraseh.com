@@ -3,6 +3,17 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { Pane } from 'tweakpane'
 import baseVertexShader from './shaders/base/vertex.glsl'
 import baseFragmentShader from './shaders/base/fragment.glsl'
+import Lenis from 'lenis'
+
+// Initialize Lenis
+const lenis = new Lenis({
+    autoRaf: true,
+})
+
+// Listen for the scroll event and log the event data
+lenis.on('scroll', (e) => {
+    console.log(e)
+})
 
 /**
  * Base
