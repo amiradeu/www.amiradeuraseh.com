@@ -38,7 +38,7 @@ nav .active a {
 
 .writing {
     display: flex;
-    max-width: 70ch;
+    max-width: 60ch;
     margin: 0px auto;
 }
 
@@ -55,9 +55,17 @@ nav .active a {
 }
 
 .work-card {
-    padding: 1rem;
-    border: 1px solid black;
-    border-radius: 12px;
+    position: relative;
+}
+
+.work-card-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    padding: 12px;
+
+    color: white;
 }
 
 .work-card ul {
@@ -76,6 +84,11 @@ nav .active a {
 
 .work-card img {
     width: 100%;
+}
+
+.work-video {
+    width: 100%;
+    border-radius: 18px;
 }
 
 /* SOCIALS */
