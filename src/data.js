@@ -1,59 +1,42 @@
-export const SUMMARY = {
-    main: 'Amira Deuraseh is a Frontend Developer with over 5 years of diverse experience in web development, programming education and creative media. She specialises in building interactive web experience using modern JavaScript frameworks & WebGL, transforming innovative ideas to life in the digital space.',
-    sub: 'Beyond development, Amira is also a dedicated programming tutor and passionate visual storyteller, making her a well-rounded professional with a love for design, art and collaboration.',
-    pronoun: 'she/her',
-}
-
-export const CONTACTS = {
-    name: 'Amira Deuraseh',
-    site: 'www.amiradeuraseh.com',
-    email: 'hey@amiradeuraseh.com',
-    location: 'Seremban, Malaysia',
-}
-
 export const WORKS = [
     {
-        title: 'Programming Tutor',
-        company: 'Various Clients',
-        year: '2019 - Present',
-        description:
-            'Amira provides personalised one-to-one tutoring in a wide range of computer science topics, from fundamental concepts to advanced design patterns. Her adaptable teaching style accommodates students from diverse educational backgrounds, and she thrives on the challenges of teaching new subjects and tailoring lessons to meet each student’s specific learning needs.',
+        title: 'Stylized Cottage',
+        techstack: ['threejs', 'blender'],
+        link: 'https://stylized-cottage.vercel.app/',
+        description: '',
     },
     {
-        title: 'Creative Content Producer',
-        company: 'Various Clients',
-        year: '2021 - Present',
-        description:
-            'As a content producer, Amira seamlessly combines roles as a photographer, videographer, storyteller and editor to create captivating visual content for global brands. Her work with clients across South Korea, Malaysia, Portugal and Japan consistently result in emotionally resonant narratives that drives user engagement for marketing campaigns.',
+        title: 'Grid Floor',
+        techstack: ['glsl', 'threejs'],
+        link: 'https://grid-floor.vercel.app/',
+        description: '',
     },
     {
-        title: 'Design Engineer',
-        company: 'Sony EMCS Malaysia',
-        year: '2019 - 2021',
-        description:
-            'At Sony, Amira played a key role in developing and maintaining Android TV Java applications for automation and testing. She developed internal software for automatic picture quality testing using Sony’s proprietary hardware sensors and Android native C++. Additionally, she helped the team in integrating Amazon Alexa’s Voice Assistant API to offer smart TV features.',
+        title: 'Sticker Mart',
+        techstack: ['react', 'framer motion', 'lenis'],
+        link: 'https://sticker-mart.vercel.app/',
+        description: '',
     },
-    {
-        title: 'Developer Intern',
-        company: 'Sony EMCS Malaysia',
-        year: '2018',
-        description:
-            'As an intern with Sony, Amira explored the usage of Amazon Alexa with smart TV. She provided a working proof of concept to control TV features with Alexa Echo device utilising a combination of Raspbian OS, infrared sensor, Amazon Web Services (AWS) and Alexa Skill Kit (ASK).',
-    },
-    {
-        title: 'Web Developer',
-        company: 'SME Corporation Malaysia',
-        year: '2017 - 2018',
-        description:
-            'Amira designed and developed an interactive data analytics platform to visualise complex SME data in user-friendly formats. This platform significantly enhanced data accessibility and provided users with real-time data simulations and insights.',
-    },
-    {
-        title: 'Research Assistance',
-        company: 'Walailak University (WU) Thailand',
-        year: '2016',
-        description:
-            'Under the supervision of Dr. Anurak Thungtong, Amira analysed and visualised student admission records using Python. Her collaborative efforts yielded valuable insights that supported data-driven decisions aimed at improving educational policies at Walailak University.',
-    },
+]
+
+export const SKILLS = [
+    'Javascript',
+    'React.js',
+    'Vue',
+    'Three.js',
+    'r3f',
+    'GLSL',
+    'CSS',
+    'SCSS',
+    'styled-component',
+    'gsap',
+    'HTML',
+    'git',
+    'p5.js',
+    'matter.js',
+    'Blender',
+    'Figma',
+    'vite',
 ]
 
 export const CERTIFICATIONS = [
@@ -105,13 +88,6 @@ export const AWARDS = [
     },
 ]
 
-export const EDUCATION = {
-    institute: 'Universiti Putra Malaysia (UPM), Serdang',
-    bachelor: 'Bachelor of Computer & Communication Systems Engineering',
-    year: '2016-2019',
-    result: 'Second-Class Upper Honours, CGPA 3.696',
-}
-
 export const LANGUAGES = [
     {
         title: 'English',
@@ -130,158 +106,5 @@ export const LANGUAGES = [
     {
         title: 'Thai, Japanese, Turkish',
         level: 'Elementary',
-    },
-]
-
-export const MODELS = {
-    LEMON: {
-        name: 'lemon',
-        source: 'https://polyhaven.com/a/lemon',
-        attributes: {
-            scale: 30,
-            rotation: [0, 0, 0.2],
-        },
-    },
-    APPLE: {
-        name: 'apple',
-        source: 'https://polyhaven.com/a/food_apple_01',
-    },
-    LIME: {
-        name: 'lime',
-        source: 'https://polyhaven.com/a/food_lime_01',
-    },
-    POMEGRATE: {
-        name: 'pomegrate',
-        source: 'https://polyhaven.com/a/food_pomegranate_01',
-    },
-    KIWI: {
-        name: 'kiwi',
-        source: 'https://polyhaven.com/a/food_kiwi_01',
-    },
-    AVOCADO: {
-        name: 'avocado',
-        source: 'https://polyhaven.com/a/food_avocado_01',
-    },
-}
-
-export const TECHSTACK = [
-    {
-        skill: 'ThreeJS',
-        level: 3,
-        image: 'threejs.svg',
-        attributes: {
-            scale: 0.06,
-            rotation: [0, 0, 0.7],
-            position: [0, 0, 0.04],
-        },
-        model: MODELS.LEMON,
-    },
-    {
-        skill: 'React',
-        image: 'react.svg',
-        level: 3,
-    },
-    {
-        skill: 'Javascript',
-        image: 'javascript.svg',
-        level: 3,
-    },
-    {
-        skill: 'CSS',
-        image: 'css.svg',
-        level: 3,
-    },
-    {
-        skill: 'styled-component',
-        image: 'styled-component.svg',
-        level: 3,
-    },
-    {
-        skill: 'git',
-        image: 'git.svg',
-        level: 3,
-    },
-    {
-        skill: 'Blender',
-        image: 'blender.svg',
-        level: 3,
-    },
-    {
-        skill: 'GLSL',
-        image: 'glsl.svg',
-        level: 3,
-    },
-    {
-        skill: 'Gsap',
-        image: 'gsap.svg',
-        level: 2,
-    },
-    {
-        skill: 'NextJS',
-        image: 'nextjs.svg',
-        level: 2,
-    },
-    {
-        skill: 'Node.js',
-        image: 'nodejs.svg',
-        level: 2,
-    },
-    {
-        skill: 'VueJS',
-        image: 'vuejs.svg',
-        level: 2,
-    },
-    {
-        skill: 'Figma',
-        image: 'figma.svg',
-        level: 1,
-    },
-    {
-        skill: 'Illustrator',
-        image: 'illustrator.svg',
-        level: 1,
-    },
-    {
-        skill: 'C++',
-        image: 'c++.svg',
-        level: 1,
-    },
-    {
-        skill: 'Android',
-        image: 'android.svg',
-        level: 1,
-    },
-    {
-        skill: 'Python',
-        image: 'python.svg',
-        level: 1,
-    },
-    {
-        skill: 'Web3',
-        image: 'web3.svg',
-        level: 1,
-    },
-]
-
-export const LEVELS = [
-    {
-        level: 5,
-        description: 'comfortable',
-    },
-    {
-        level: 4,
-        description: 'good',
-    },
-    {
-        level: 3,
-        description: 'experimental',
-    },
-    {
-        level: 2,
-        description: 'do-able',
-    },
-    {
-        level: 1,
-        description: 'well, but not my preference',
     },
 ]

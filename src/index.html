@@ -4,44 +4,184 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Amira Deuraseh</title>
-
-        <!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-            rel="stylesheet"
-        /> -->
-        <style>
-            /* latin */
-            @font-face {
-                font-family: 'Cormorant Garamond';
-                font-style: normal;
-                font-weight: 400;
-                font-display: swap;
-                src: url('/fonts/CormorantGaramond-Normal.woff2')
-                    format('woff2');
-                unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC,
-                    U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F,
-                    U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
-                    U+FEFF, U+FFFD;
-            }
-            /* latin */
-            @font-face {
-                font-family: 'Cormorant Garamond';
-                font-style: italic;
-                font-weight: 400;
-                font-display: swap;
-                src: url('/fonts/CormorantGaramond-Italic.woff2')
-                    format('woff2');
-                unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC,
-                    U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F,
-                    U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
-                    U+FEFF, U+FFFD;
-            }
-        </style>
+        <link rel="stylesheet" href="./style.css" />
     </head>
     <body>
-        <div id="root"></div>
-        <script type="module" src="./script.jsx"></script>
+        <main>
+            <header>
+                <nav>
+                    <ul>
+                        <li class="active"><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#work">Work</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </header>
+            <div class="content">
+                <section id="index"></section>
+                <section id="about">
+                    <div class="writing">
+                        <span
+                            ><p>
+                                Hello 👋 I'm Amira Deuraseh, a frontend engineer
+                                based in Malaysia. I have a diverse expertise in
+                                web development, programming education and
+                                creative media. Currently, my work focuses on
+                                building a unique web experience with WebGL, 3D
+                                and shaders to push the boundaries of digital
+                                storytelling.
+                            </p>
+                            <p>
+                                I believe that teaching is one of the best ways
+                                to deepen one's own understanding, which is why
+                                I've spent the past four years as a private
+                                tutor, guiding students of all backgrounds
+                                through programming and computer science.
+                            </p>
+                            <p>
+                                Beyong coding, you can find me behind the
+                                camera, immersed in filmmaking and content
+                                creation or diving into learning new languages.
+                            </p></span
+                        >
+                    </div>
+                </section>
+                <section id="work">
+                    <section class="projects">
+                        <div class="project-card">
+                            <video class="project-video" autoplay loop>
+                                <source
+                                    src="/works/stylized-cottage.mp4"
+                                    type="video/mp4"
+                                />
+                            </video>
+                            <div class="project-card-info">
+                                <h2>Stylized Cottage</h2>
+                                <ul>
+                                    <li>three.js</li>
+                                    <li>blender</li>
+                                </ul>
+                                <a href="https://stylized-cottage.vercel.app/"
+                                    >Demo</a
+                                >
+                            </div>
+                        </div>
+                        <div class="project-card">
+                            <video class="project-video" autoplay loop>
+                                <source
+                                    src="/works/grid-floor.mp4"
+                                    type="video/mp4"
+                                />
+                            </video>
+                            <div class="project-card-info">
+                                <h2>Grid Floor</h2>
+                                <ul>
+                                    <li>glsl</li>
+                                    <li>three.js</li>
+                                </ul>
+                                <a href="https://grid-floor.vercel.app/"
+                                    >Demo</a
+                                >
+                            </div>
+                        </div>
+                        <div class="project-card">
+                            <img
+                                src="/works/sticker-mart.png"
+                                alt="Sticker Mart Snapshot"
+                            />
+                            <div class="project-card-info">
+                                <h2>Sticker Mart</h2>
+                                <ul>
+                                    <li>react</li>
+                                    <li>framer motion</li>
+                                    <li>lenis</li>
+                                </ul>
+                                <a href="https://sticker-mart.vercel.app/"
+                                    >Demo</a
+                                >
+                            </div>
+                        </div>
+                    </section>
+                    <section class="works">
+                        <h2>Work Experience</h2>
+                        <div class="work-card">
+                            <h3 class="work-title">Programming Tutor</h3>
+                            <h3 class="work-company">Various clients</h3>
+                            <div class="work-year">2019-present</div>
+                        </div>
+                        <div class="work-card">
+                            <h3 class="work-title">
+                                Creative Content Producer
+                            </h3>
+                            <h3 class="work-company">Various clients</h3>
+                            <div class="work-year">2021-present</div>
+                        </div>
+                        <div class="work-card">
+                            <h3 class="work-title">Design Engineer</h3>
+                            <h3 class="work-company">Sony EMCS Malaysia</h3>
+                            <div class="work-year">2019 - 2021</div>
+                        </div>
+                        <div class="work-card">
+                            <h3 class="work-title">Developer Intern</h3>
+                            <h3 class="work-company">Sony EMCS Malaysia</h3>
+                            <div class="work-year">2018</div>
+                        </div>
+                        <div class="work-card">
+                            <h3 class="work-title">Web Developer</h3>
+                            <h3 class="work-company">
+                                SME Corporation Malaysia
+                            </h3>
+                            <div class="work-year">2017 - 2018</div>
+                        </div>
+                        <div class="work-card">
+                            <h3 class="work-title">Research Assistance</h3>
+                            <h3 class="work-company">
+                                Walailak University (WU) Thailand
+                            </h3>
+                            <div class="work-year">2016</div>
+                        </div>
+                    </section>
+                </section>
+                <section id="contact">
+                    <div class="socials">
+                        <ul>
+                            <li>
+                                <a href="https://x.com/amiradeuraseh"
+                                    >Twitter (X)</a
+                                >
+                            </li>
+                            <li>
+                                <a href="https://github.com/amiradeu">Github</a>
+                            </li>
+                            <li>
+                                <a
+                                    href="https://www.linkedin.com/in/amiradeuraseh/"
+                                    >LinkedIn</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="/docs/AmiraDeuraseh_Resume.pdf"
+                                    download
+                                    >Resume</a
+                                >
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+            <footer></footer>
+        </main>
+        <div class="canvases-wrapper">
+            <div class="p5-canvas-wrapper">
+                <canvas class="p5-canvas"></canvas>
+            </div>
+            <div class="matter-canvas-wrapper"></div>
+        </div>
+        <!-- <canvas class="webgl"></canvas> -->
+
+        <script type="module" src="./script.js"></script>
+        <script type="module" src="./p5-matter/script.js"></script>
     </body>
 </html>
