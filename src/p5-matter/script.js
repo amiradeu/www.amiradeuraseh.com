@@ -94,7 +94,7 @@ const render = Render.create({
         background: 'transparent',
     },
 })
-console.log(render)
+
 // run the renderer
 Render.run(render)
 
