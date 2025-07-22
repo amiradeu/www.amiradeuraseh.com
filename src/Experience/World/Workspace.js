@@ -1,4 +1,4 @@
-import * as THREE from 'three'
+import { MeshBasicMaterial } from 'three'
 import Experience from '../Experience.js'
 
 export default class Workspace {
@@ -9,31 +9,59 @@ export default class Workspace {
         this.time = this.experience.time
         this.debug = this.experience.debug
 
-        // Debug
-        if (this.debug.active) {
-            this.debugFolder = this.debug.ui.addFolder({
-                title: 'workspace',
-            })
+        this.options = {
+            emissionColor: '#e29c30',
         }
 
-        // Resource
-        this.resource = this.resources.items.roomModel
-
+        this.setMaterials()
         this.setModel()
+        this.setDebug()
     }
 
-    setModel() {
-        this.model = this.resource.scene
-        // this.model.scale.set(0.02, 0.02, 0.02)
-        this.scene.add(this.model)
-        this.model.position.set(0, -2, 0)
+    setTextures() {}
 
-        this.model.traverse((child) => {
-            if (child instanceof THREE.Mesh) {
-                child.castShadow = true
-            }
+    setMaterials() {
+        this.emissionMaterial = new MeshBasicMaterial({
+            color: this.options.emissionColor,
         })
     }
 
+    setModel() {
+        this.items = {}
+
+        this.model = this.resources.items.model.scene
+        this.scene.add(this.model)
+
+        this.model.traverse((child) => {
+            this.items[child.name] = child
+
+            child.castShadow = true
+            child.receiveShadow = true
+        })
+
+        // this.model.scale.set(0.02, 0.02, 0.02)
+        this.model.position.set(0, -2, 0)
+
+        this.setEmission()
+    }
+
+    setEmission() {
+        this.items['emissions'].material = this.emissionMaterial
+    }
+
     update() {}
+
+    setDebug() {
+        if (!this.debug.active) return
+
+        const f1 = this.debug.ui.addFolder({
+            title: '💡 Lights',
+        })
+
+        f1.addBinding(this.options, 'emissionColor', {
+            label: 'Color',
+        }).on('change', () => {
+            this.emissionMaterial.color.set(this.options.emissionColor)
+        })
+    }
 }

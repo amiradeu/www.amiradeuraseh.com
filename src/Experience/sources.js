@@ -1,6 +1,6 @@
 export default [
     {
-        name: 'roomModel',
+        name: 'model',
         type: 'gltfModel',
         path: 'models/workspace.glb',
     },
@@ -13,5 +13,10 @@ export default [
         name: 'environmentMap2',
         type: 'rgbeTexture',
         path: 'textures/hdri/belfast_sunset_puresky_1k.hdr',
+    },
+    {
+        name: 'environmentMap3',
+        type: 'rgbeTexture',
+        path: 'textures/hdri/cloudy_puresky_1k.hdr',
     },
 ]

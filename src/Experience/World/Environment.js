@@ -9,12 +9,19 @@ export default class Environment {
         this.resources = this.experience.resources
         this.debug = this.experience.debug
 
+        this.options = {
+            intensity: 0.4,
+            rotation: Math.PI,
+        }
+
         this.setTexture()
         this.setEnvironmentMap()
         this.setDebug()
     }
 
     setTexture() {
+        this.textures = {}
+
         this.texture = this.resources.items.environmentMap2
         this.texture.mapping = EquirectangularReflectionMapping
     }
@@ -23,34 +30,30 @@ export default class Environment {
         this.scene.environment = this.texture
         this.scene.background = this.texture
 
-        this.scene.backgroundRotation.y = Math.PI
-        this.scene.environmentRotation.y = Math.PI
+        this.scene.backgroundRotation.y = this.options.rotation
+        this.scene.environmentRotation.y = this.options.rotation
 
-        this.scene.backgroundIntensity = 0.8
-        this.scene.environmentIntensity = 0.2
+        this.scene.backgroundIntensity = this.options.intensity
+        this.scene.environmentIntensity = this.options.intensity
     }
 
     setDebug() {
         if (!this.debug.active) return
 
         const f1 = this.debug.ui.addFolder({
-            title: '🏞️ Background',
+            title: '🏞️ Environment Map',
         })
-        f1.addBinding(this.scene, 'backgroundIntensity', {
+        f1.addBinding(this.options, 'intensity', {
             label: 'Intensity',
+        }).on('change', () => {
+            this.scene.backgroundIntensity = this.options.intensity
+            this.scene.environmentIntensity = this.options.intensity
         })
-        f1.addBinding(this.scene, 'backgroundRotation', {
+        f1.addBinding(this.options, 'rotation', {
             label: 'Rotation',
-        })
-
-        const f2 = this.debug.ui.addFolder({
-            title: '🏰 Scene',
-        })
-        f2.addBinding(this.scene, 'environmentIntensity', {
-            label: 'Intensity',
-        })
-        f2.addBinding(this.scene, 'environmentRotation', {
-            label: 'Rotation',
+        }).on('change', () => {
+            this.scene.backgroundRotation.y = this.options.rotation
+            this.scene.environmentRotation.y = this.options.rotation
         })
     }
 }
