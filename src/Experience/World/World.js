@@ -1,6 +1,7 @@
 import Experience from '../Experience.js'
 import Environment from './Environment.js'
 import Lights from './Lights.js'
+import Bloom from './Bloom.js'
 import Workspace from './Workspace.js'
 
 export default class World {
@@ -11,6 +12,7 @@ export default class World {
 
         // Wait for resources
         this.resources.on('ready', () => {
+            this.bloom = new Bloom()
             // this.lights = new Lights()
             this.environment = new Environment()
 

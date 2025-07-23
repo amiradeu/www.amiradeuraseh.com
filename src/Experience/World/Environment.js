@@ -28,7 +28,7 @@ export default class Environment {
 
     setEnvironmentMap() {
         this.scene.environment = this.texture
-        this.scene.background = this.texture
+        // this.scene.background = this.texture
 
         this.scene.backgroundRotation.y = this.options.rotation
         this.scene.environmentRotation.y = this.options.rotation
