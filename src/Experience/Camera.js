@@ -22,7 +22,7 @@ export default class Camera {
             0.1,
             100
         )
-        this.instance.position.set(28, 6, 27)
+        this.instance.position.set(8, 2, 5)
         this.instance.layers.enable(BLOOM_SCENE)
         this.scene.add(this.instance)
     }
@@ -30,6 +30,8 @@ export default class Camera {
     setControls() {
         this.controls = new OrbitControls(this.instance, this.canvas)
         this.controls.enableDamping = true
+        this.controls.maxPolarAngle = Math.PI * 0.55
+        this.controls.maxDistance = 45
     }
 
     resize() {
