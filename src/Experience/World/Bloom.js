@@ -4,7 +4,6 @@ import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer
 
 import Experience from '../Experience'
 import { BLOOM_SCENE } from '../Camera.js'
-import { RenderPass } from 'three/examples/jsm/Addons.js'
 
 export default class Bloom {
     constructor() {
@@ -16,8 +15,8 @@ export default class Bloom {
         this.debug = this.experience.debug
 
         this.options = {
-            strength: 0.3,
-            radius: 0.065,
+            strength: 0.12,
+            radius: 0.1,
             threshold: 0.67,
         }
 
@@ -66,7 +65,7 @@ export default class Bloom {
 
         f1.addBinding(this.pass, 'strength', {
             min: 0,
-            max: 2,
+            max: 0.5,
         })
 
         f1.addBinding(this.pass, 'radius', {
@@ -77,7 +76,7 @@ export default class Bloom {
         // Lower value means more objects will bloom
         f1.addBinding(this.pass, 'threshold', {
             min: 0,
-            max: 1,
+            max: 2,
         })
     }
 }

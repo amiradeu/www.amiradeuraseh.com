@@ -13,20 +13,11 @@ export default class Workspace {
 
         this.options = {
             emissionColor: '#f7ff59',
+            emissiveStrength: 8,
         }
 
-        this.setMaterials()
         this.setModel()
         this.setDebug()
-    }
-
-    setTextures() {}
-
-    setMaterials() {
-        this.emissionMaterial = new MeshBasicMaterial({
-            color: this.options.emissionColor,
-        })
-        this.emissionMaterial.emissiveIntensity = 10
     }
 
     setModel() {
@@ -44,14 +35,10 @@ export default class Workspace {
             child.receiveShadow = true
         })
 
-        // this.model.scale.set(0.02, 0.02, 0.02)
         this.model.position.set(0, -3, 0)
 
-        this.setEmission()
-    }
-
-    setEmission() {
-        this.items['emissions'].material = this.emissionMaterial
+        this.emission = this.items['emissions'].material
+        this.emission.emissiveIntensity = this.options.emissiveStrength
     }
 
     update() {}
@@ -60,13 +47,17 @@ export default class Workspace {
         if (!this.debug.active) return
 
         const f1 = this.debug.ui.addFolder({
-            title: '💡 Lights',
+            title: '💡 Emission',
         })
 
+        f1.addBinding(this.emission, 'emissiveIntensity', {
+            min: 0,
+            max: 15,
+        })
         f1.addBinding(this.options, 'emissionColor', {
             label: 'Color',
         }).on('change', () => {
-            this.emissionMaterial.color.set(this.options.emissionColor)
+            this.emission.emissive = this.options.emissionColor
         })
     }
 }

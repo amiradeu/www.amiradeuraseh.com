@@ -17,6 +17,6 @@ export default [
     {
         name: 'environmentMap3',
         type: 'rgbeTexture',
-        path: 'textures/hdri/cloudy_puresky_1k.hdr',
+        path: 'textures/hdri/qwantani_dusk_2_puresky_1k.hdr',
     },
 ]

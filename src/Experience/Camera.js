@@ -22,7 +22,7 @@ export default class Camera {
             0.1,
             100
         )
-        this.instance.position.set(6, 4, 10)
+        this.instance.position.set(28, 6, 27)
         this.instance.layers.enable(BLOOM_SCENE)
         this.scene.add(this.instance)
     }
@@ -38,6 +38,14 @@ export default class Camera {
     }
 
     update() {
+        // console.log(
+        //     'x',
+        //     this.instance.position.x,
+        //     'y',
+        //     this.instance.position.y,
+        //     'z',
+        //     this.instance.position.z
+        // )
         this.controls.update()
     }
 }

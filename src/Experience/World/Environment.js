@@ -1,4 +1,4 @@
-import { Color, EquirectangularReflectionMapping } from 'three'
+import { Camera, Color, EquirectangularReflectionMapping, Scene } from 'three'
 
 import Experience from '../Experience.js'
 
@@ -10,9 +10,11 @@ export default class Environment {
         this.debug = this.experience.debug
 
         this.options = {
-            intensity: 0.4,
-            rotation: Math.PI,
-            isVisible: false,
+            environmentIntensity: 0.63,
+            backgroundIntensity: 0.11,
+            environmentRotation: Math.PI,
+            backgroundRotation: 2.87,
+            isVisible: true,
             color: '#191923',
         }
 
@@ -22,26 +24,29 @@ export default class Environment {
     }
 
     setTexture() {
-        this.textures = {}
+        // Seperate background and environment textures
+        // to avoid bloom effect on background
+        this.environmentTexture = this.resources.items.environmentMap2
+        this.environmentTexture.mapping = EquirectangularReflectionMapping
 
-        this.texture = this.resources.items.environmentMap2
-        this.texture.mapping = EquirectangularReflectionMapping
+        this.backgroundTexture = this.resources.items.environmentMap3
+        this.backgroundTexture.mapping = EquirectangularReflectionMapping
     }
 
     setEnvironmentMap() {
-        this.scene.environment = this.texture
-        this.backgroundVisible()
+        this.scene.environment = this.environmentTexture
+        this.setBackground()
 
-        this.scene.backgroundRotation.y = this.options.rotation
-        this.scene.environmentRotation.y = this.options.rotation
+        this.scene.backgroundRotation.y = this.options.backgroundRotation
+        this.scene.environmentRotation.y = this.options.environmentRotation
 
-        this.scene.backgroundIntensity = this.options.intensity
-        this.scene.environmentIntensity = this.options.intensity
+        this.scene.backgroundIntensity = this.options.backgroundIntensity
+        this.scene.environmentIntensity = this.options.environmentIntensity
     }
 
-    backgroundVisible() {
+    setBackground() {
         if (this.options.isVisible) {
-            this.scene.background = this.texture
+            this.scene.background = this.backgroundTexture
         } else {
             this.scene.background = new Color(this.options.color)
         }
@@ -54,34 +59,57 @@ export default class Environment {
             title: '🏞️ Environment Map',
         })
 
-        f1.addBinding(this.options, 'isVisible', {
-            label: 'Background',
-        }).on('change', () => {
-            this.backgroundVisible()
+        const f2 = f1.addFolder({
+            title: '🌇 Background',
         })
 
-        f1.addBinding(this.options, 'intensity', {
+        f2.addBinding(this.options, 'isVisible', {
+            label: 'Visible',
+        }).on('change', () => {
+            this.setBackground()
+        })
+
+        f2.addBinding(this.options, 'backgroundIntensity', {
             label: 'Intensity',
             min: 0,
             max: 0.5,
         }).on('change', () => {
-            this.scene.backgroundIntensity = this.options.intensity
-            this.scene.environmentIntensity = this.options.intensity
+            this.scene.backgroundIntensity = this.options.backgroundIntensity
         })
 
-        f1.addBinding(this.options, 'rotation', {
+        f2.addBinding(this.options, 'backgroundRotation', {
             label: 'Rotation',
             min: -Math.PI,
             max: Math.PI,
         }).on('change', () => {
-            this.scene.backgroundRotation.y = this.options.rotation
-            this.scene.environmentRotation.y = this.options.rotation
+            this.scene.backgroundRotation.y = this.options.backgroundRotation
         })
 
-        f1.addBinding(this.options, 'color', {
+        f2.addBinding(this.options, 'color', {
             label: 'Color',
         }).on('change', () => {
             this.scene.background = new Color(this.options.color)
+        })
+
+        const f3 = f1.addFolder({
+            title: '🛋️ Environment',
+        })
+
+        f3.addBinding(this.options, 'environmentIntensity', {
+            label: 'Intensity',
+            min: 0,
+            max: 2,
+        }).on('change', () => {
+            this.scene.environmentIntensity = this.options.environmentIntensity
+        })
+
+        f3.addBinding(this.options, 'environmentRotation', {
+            label: 'Rotation',
+            min: -Math.PI,
+            max: Math.PI,
+        }).on('change', () => {
+            this.scene.backgroundRotation.y = this.options.environmentRotation
+            this.scene.environmentRotation.y = this.options.environmentRotation
         })
     }
 }

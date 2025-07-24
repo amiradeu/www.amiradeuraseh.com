@@ -12,10 +12,10 @@ export default class World {
 
         // Wait for resources
         this.resources.on('ready', () => {
-            this.bloom = new Bloom()
             // this.lights = new Lights()
             this.environment = new Environment()
 
+            this.bloom = new Bloom()
             this.workspace = new Workspace()
         })
     }
