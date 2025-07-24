@@ -7,7 +7,6 @@ import Camera from './Camera.js'
 import Renderer from './Renderer.js'
 import World from './World/World.js'
 import Resources from './Utils/Resources.js'
-
 import sources from './sources.js'
 import PostProcessing from './PostProcessing.js'
 

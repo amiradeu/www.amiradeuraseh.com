@@ -1,22 +1,24 @@
-import { Layers, Mesh } from 'three'
+import { Layers, Mesh, MeshBasicMaterial } from 'three'
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js'
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js'
 
 import Experience from '../Experience'
-
-const BLOOM_SCENE = 1
+import { BLOOM_SCENE } from '../Camera.js'
+import { RenderPass } from 'three/examples/jsm/Addons.js'
 
 export default class Bloom {
     constructor() {
         this.experience = new Experience()
         this.renderer = this.experience.renderer.instance
+        this.camera = this.experience.camera
+        this.scene = this.experience.scene
         this.effectComposer = this.experience.effectComposer
         this.debug = this.experience.debug
 
         this.options = {
-            strength: 0.34,
+            strength: 0.3,
             radius: 0.065,
-            threshold: 0.4,
+            threshold: 0.67,
         }
 
         this.setLayer()
@@ -27,6 +29,12 @@ export default class Bloom {
     setLayer() {
         this.layer = new Layers()
         this.layer.set(BLOOM_SCENE)
+    }
+
+    setMaterial() {
+        // Store materials not effected by bloom
+        this.materials = {}
+        this.darkMaterial = new MeshBasicMaterial({ color: 'black' })
     }
 
     setBloom() {
@@ -40,6 +48,7 @@ export default class Bloom {
         this.composer.renderToScreen = false
 
         this.effectComposer.addPass(this.pass)
+        // this.effectComposer.addSubComposer(this.composer)
     }
 
     // Add objects causing bloom
@@ -58,20 +67,17 @@ export default class Bloom {
         f1.addBinding(this.pass, 'strength', {
             min: 0,
             max: 2,
-            step: 0.001,
         })
 
         f1.addBinding(this.pass, 'radius', {
             min: 0,
             max: 2,
-            step: 0.001,
         })
 
         // Lower value means more objects will bloom
         f1.addBinding(this.pass, 'threshold', {
             min: 0,
             max: 1,
-            step: 0.001,
         })
     }
 }

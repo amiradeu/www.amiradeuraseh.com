@@ -1,7 +1,8 @@
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js'
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js'
-import Experience from './Experience.js'
 
+import Experience from './Experience.js'
+import { BLOOM_SCENE } from './Camera.js'
 export default class PostProcessing {
     constructor() {
         this.experience = new Experience()
@@ -32,6 +33,10 @@ export default class PostProcessing {
 
     update() {
         this.effectComposer.render()
+    }
+
+    addSubComposer(composer) {
+        this.composers.push(composer)
     }
 
     addPass(pass) {

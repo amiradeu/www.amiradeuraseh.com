@@ -1,5 +1,7 @@
 import { MeshBasicMaterial } from 'three'
+
 import Experience from '../Experience.js'
+import { BLOOM_SCENE } from '../Camera.js'
 
 export default class Workspace {
     constructor() {
@@ -10,7 +12,7 @@ export default class Workspace {
         this.debug = this.experience.debug
 
         this.options = {
-            emissionColor: '#e29c30',
+            emissionColor: '#f7ff59',
         }
 
         this.setMaterials()
@@ -24,6 +26,7 @@ export default class Workspace {
         this.emissionMaterial = new MeshBasicMaterial({
             color: this.options.emissionColor,
         })
+        this.emissionMaterial.emissiveIntensity = 10
     }
 
     setModel() {
@@ -35,12 +38,14 @@ export default class Workspace {
         this.model.traverse((child) => {
             this.items[child.name] = child
 
+            // Add to bloom layer
+            child.layers.set(BLOOM_SCENE)
             child.castShadow = true
             child.receiveShadow = true
         })
 
         // this.model.scale.set(0.02, 0.02, 0.02)
-        this.model.position.set(0, -2, 0)
+        this.model.position.set(0, -3, 0)
 
         this.setEmission()
     }
