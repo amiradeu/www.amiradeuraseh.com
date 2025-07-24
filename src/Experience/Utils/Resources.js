@@ -52,6 +52,16 @@ export default class Resources extends EventEmitter {
                     // console.log(source, file)
                     this.sourceLoaded(source, file)
                 })
+            } else if (source.type === 'video') {
+                const video = document.createElement('video')
+                video.src = source.path
+                video.crossOrigin = 'anonymous'
+                video.muted = true
+                video.loop = true
+                video.playsInline = true
+                video.play()
+
+                this.sourceLoaded(source, video)
             }
         }
     }

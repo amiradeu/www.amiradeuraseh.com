@@ -19,4 +19,14 @@ export default [
         type: 'rgbeTexture',
         path: 'textures/hdri/qwantani_dusk_2_puresky_1k.hdr',
     },
+    {
+        name: 'demovideo',
+        type: 'video',
+        path: 'demo/mistwood-cottage.mp4',
+    },
+    {
+        name: 'wallpaper',
+        type: 'texture',
+        path: 'textures/wallpaper.jpg',
+    },
 ]

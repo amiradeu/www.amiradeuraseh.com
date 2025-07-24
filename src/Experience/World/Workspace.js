@@ -1,7 +1,18 @@
-import { MeshBasicMaterial } from 'three'
+import {
+    ClampToEdgeWrapping,
+    LinearFilter,
+    Mesh,
+    MeshBasicMaterial,
+    MeshLambertMaterial,
+    PlaneGeometry,
+    Quaternion,
+    RGBFormat,
+    SRGBColorSpace,
+    Vector3,
+    VideoTexture,
+} from 'three'
 
 import Experience from '../Experience.js'
-import { BLOOM_SCENE } from '../Camera.js'
 
 export default class Workspace {
     constructor() {
@@ -16,8 +27,30 @@ export default class Workspace {
             emissiveStrength: 8,
         }
 
+        this.setTextures()
+        this.setMaterial()
         this.setModel()
         this.setDebug()
+    }
+
+    setTextures() {
+        this.video = this.resources.items.demovideo
+        this.videoTexture = new VideoTexture(this.video)
+        this.videoTexture.colorSpace = SRGBColorSpace
+
+        this.photoTexture = this.resources.items.wallpaper
+        this.photoTexture.flipY = false
+        this.photoTexture.colorSpace = SRGBColorSpace
+    }
+
+    setMaterial() {
+        this.videoMaterial = new MeshBasicMaterial({
+            map: this.videoTexture,
+        })
+
+        this.photoMaterial = new MeshBasicMaterial({
+            map: this.photoTexture,
+        })
     }
 
     setModel() {
@@ -29,16 +62,48 @@ export default class Workspace {
         this.model.traverse((child) => {
             this.items[child.name] = child
 
-            // Add to bloom layer
-            child.layers.set(BLOOM_SCENE)
             child.castShadow = true
             child.receiveShadow = true
         })
 
         this.model.position.set(0, -3, 0)
 
+        this.setEmission()
+        this.setCustom()
+    }
+
+    setEmission() {
+        // console.log(this.items['emissions'])
         this.emission = this.items['emissions'].material
         this.emission.emissiveIntensity = this.options.emissiveStrength
+    }
+
+    setCustom() {
+        this.laptop = this.items['laptopscreen']
+        this.laptop.material = this.photoMaterial
+
+        this.monitor = this.items['monitorscreen']
+        const worldPos = new Vector3()
+        const worldQuat = new Quaternion()
+        const worldScale = new Vector3()
+
+        this.monitor.getWorldPosition(worldPos)
+        this.monitor.getWorldQuaternion(worldQuat)
+        this.monitor.getWorldScale(worldScale)
+
+        const monitorPlane = new Mesh(
+            new PlaneGeometry(1, 1),
+            this.videoMaterial
+        )
+        monitorPlane.geometry.scale(1.92, 1.08, 1)
+
+        monitorPlane.position.copy(worldPos)
+        monitorPlane.scale.set(1.3, 1.3, 1.3)
+        monitorPlane.geometry.rotateY(Math.PI * 0.5)
+
+        this.scene.add(monitorPlane)
+
+        this.monitor.parent.remove(this.monitor)
     }
 
     update() {}
@@ -54,6 +119,7 @@ export default class Workspace {
             min: 0,
             max: 15,
         })
+
         f1.addBinding(this.options, 'emissionColor', {
             label: 'Color',
         }).on('change', () => {

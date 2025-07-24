@@ -1,9 +1,7 @@
-import { Layers, Mesh, MeshBasicMaterial } from 'three'
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js'
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js'
 
 import Experience from '../Experience'
-import { BLOOM_SCENE } from '../Camera.js'
 
 export default class Bloom {
     constructor() {
@@ -15,25 +13,13 @@ export default class Bloom {
         this.debug = this.experience.debug
 
         this.options = {
-            strength: 0.12,
+            strength: 0.1,
             radius: 0.1,
             threshold: 0.67,
         }
 
-        this.setLayer()
         this.setBloom()
         this.setDebug()
-    }
-
-    setLayer() {
-        this.layer = new Layers()
-        this.layer.set(BLOOM_SCENE)
-    }
-
-    setMaterial() {
-        // Store materials not effected by bloom
-        this.materials = {}
-        this.darkMaterial = new MeshBasicMaterial({ color: 'black' })
     }
 
     setBloom() {
@@ -48,11 +34,6 @@ export default class Bloom {
 
         this.effectComposer.addPass(this.pass)
         // this.effectComposer.addSubComposer(this.composer)
-    }
-
-    // Add objects causing bloom
-    addBloom(mesh = new Mesh()) {
-        mesh.layers.enable(BLOOM_SCENE)
     }
 
     setDebug() {
