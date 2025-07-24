@@ -1,9 +1,6 @@
 import {
-    ClampToEdgeWrapping,
-    LinearFilter,
     Mesh,
     MeshBasicMaterial,
-    MeshLambertMaterial,
     PlaneGeometry,
     Quaternion,
     RGBFormat,
@@ -37,6 +34,7 @@ export default class Workspace {
         this.video = this.resources.items.demovideo
         this.videoTexture = new VideoTexture(this.video)
         this.videoTexture.colorSpace = SRGBColorSpace
+        this.videoTexture.format = RGBFormat
 
         this.photoTexture = this.resources.items.wallpaper
         this.photoTexture.flipY = false

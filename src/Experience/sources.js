@@ -22,7 +22,7 @@ export default [
     {
         name: 'demovideo',
         type: 'video',
-        path: 'demo/mistwood-cottage.mp4',
+        path: 'demo/mistwoodcottage.mp4',
     },
     {
         name: 'wallpaper',
