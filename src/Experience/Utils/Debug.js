@@ -10,7 +10,7 @@ export default class Debug {
         if (this.active) {
             this.ui = new Pane({
                 title: 'Debug',
-                expanded: false,
+                expanded: true,
             })
 
             this.experience = new Experience()

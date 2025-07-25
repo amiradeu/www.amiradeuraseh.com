@@ -10,7 +10,7 @@ export default class Environment {
         this.debug = this.experience.debug
 
         this.options = {
-            environmentIntensity: 0.63,
+            environmentIntensity: 0.45,
             backgroundIntensity: 0.11,
             environmentRotation: Math.PI,
             backgroundRotation: 2.87,

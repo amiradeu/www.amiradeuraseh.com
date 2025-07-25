@@ -10,6 +10,7 @@ import {
 } from 'three'
 
 import Experience from '../Experience.js'
+import TinyLight from '../objects/TinyLight.js'
 
 export default class Workspace {
     constructor() {
@@ -68,11 +69,12 @@ export default class Workspace {
 
         this.setEmission()
         this.setCustom()
+        this.setLights()
     }
 
     setEmission() {
         // console.log(this.items['emissions'])
-        this.emission = this.items['emissions'].material
+        this.emission = this.items['emissionmain'].material
         this.emission.emissiveIntensity = this.options.emissiveStrength
     }
 
@@ -102,6 +104,48 @@ export default class Workspace {
         this.scene.add(monitorPlane)
 
         this.monitor.parent.remove(this.monitor)
+    }
+
+    setLights() {
+        const worldPos = new Vector3()
+        const worldQuat = new Quaternion()
+        const worldScale = new Vector3()
+
+        let light = this.items['emissiontiny']
+        light.getWorldPosition(worldPos)
+        light.getWorldQuaternion(worldQuat)
+        light.getWorldScale(worldScale)
+
+        new TinyLight({ position: worldPos, intensity: 0.3, name: 'Tiny' })
+
+        light = this.items['emissionmain']
+        light.getWorldPosition(worldPos)
+        light.getWorldQuaternion(worldQuat)
+        light.getWorldScale(worldScale)
+        worldPos.y -= 2
+        new TinyLight({ position: worldPos, intensity: 10, name: 'Main' })
+
+        light = this.items['emissionwindow']
+        light.getWorldPosition(worldPos)
+        light.getWorldQuaternion(worldQuat)
+        light.getWorldScale(worldScale)
+        new TinyLight({ position: worldPos, intensity: 0.6, name: 'Window' })
+
+        light = this.items['emissionshelf']
+        light.getWorldPosition(worldPos)
+        light.getWorldQuaternion(worldQuat)
+        light.getWorldScale(worldScale)
+        new TinyLight({ position: worldPos, intensity: 0.2, name: 'Shelf' })
+
+        light = this.items['emissionwindowshelf']
+        light.getWorldPosition(worldPos)
+        light.getWorldQuaternion(worldQuat)
+        light.getWorldScale(worldScale)
+        new TinyLight({
+            position: worldPos,
+            intensity: 0.2,
+            name: 'Window Shelf',
+        })
     }
 
     update() {}
