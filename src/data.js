@@ -1,10 +1,38 @@
+export const LINKS = {
+    github: 'https://github.com/amiradeu',
+    linkedin: 'https://www.linkedin.com/in/amiradeuraseh',
+    twitter: 'https://x.com/amiradeuraseh',
+    resume: '/docs/Amira-Deuraseh-Resume.pdf',
+    email: 'hey@amiradeuraseh.com',
+}
+
+export const NAME = {
+    name: 'Amira Deuraseh',
+    title: 'Frontend Engineer',
+    description: 'Building unique web experiences with WebGL, 3D and shaders.',
+}
+
+export const INTRO = {
+    title: 'About Me',
+    intro: `Hello 👋 I'm Amira Deuraseh, a frontend engineer
+                based in Malaysia. I have a diverse expertise in
+                web development, programming education and
+                creative media. Currently, my work focuses on
+                building a unique web experience with WebGL, 3D
+                and shaders to push the boundaries of digital
+                storytelling.`,
+}
+
 export const WORKS = [
     {
-        title: 'Stylized Cottage',
-        techstack: ['threejs', 'blender'],
-        link: 'https://stylized-cottage.vercel.app/',
+        title: 'Mistwood Cottage',
+        techstack: ['threejs', 'rapier3d', 'blender', 'gsap'],
+        link: 'https://mistwood-cottage.vercel.app/',
         description: '',
     },
+]
+
+export const LABS = [
     {
         title: 'Grid Floor',
         techstack: ['glsl', 'threejs'],
