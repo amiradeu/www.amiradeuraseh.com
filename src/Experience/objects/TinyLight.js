@@ -1,4 +1,4 @@
-import { Color, PointLight, PointLightHelper } from 'three'
+import { Color, PointLight, PointLightHelper, Quaternion, Vector3 } from 'three'
 import Experience from '../Experience'
 
 export default class TinyLight {
@@ -8,7 +8,9 @@ export default class TinyLight {
         this.scene = this.experience.scene
 
         const defaultOptions = {
+            mesh: null,
             position: { x: 0, y: 0, z: 0 },
+            offset: { x: 0, y: 0, z: 0 },
             color: '#fff000',
             intensity: 1.5,
             name: 'Point Light',
@@ -19,6 +21,10 @@ export default class TinyLight {
             ...options,
         }
 
+        const worldPos = new Vector3()
+        this.options.mesh.getWorldPosition(worldPos)
+        this.options.position = worldPos
+
         this.setPointLight()
         this.setDebug()
     }
@@ -28,7 +34,12 @@ export default class TinyLight {
             this.options.color,
             this.options.intensity
         )
-        this.pointLight.position.copy(this.options.position)
+
+        this.pointLight.position.set(
+            this.options.position.x + this.options.offset.x,
+            this.options.position.y + this.options.offset.y,
+            this.options.position.z + this.options.offset.z
+        )
         this.scene.add(this.pointLight)
     }
 
@@ -48,7 +59,7 @@ export default class TinyLight {
             })
 
             folder.addBinding(this.pointLight, 'position', {
-                step: 0.01,
+                step: 0.1,
             })
 
             folder.addBinding(this.pointLight, 'intensity', {

@@ -107,42 +107,33 @@ export default class Workspace {
     }
 
     setLights() {
-        const worldPos = new Vector3()
-        const worldQuat = new Quaternion()
-        const worldScale = new Vector3()
-
-        let light = this.items['emissiontiny']
-        light.getWorldPosition(worldPos)
-        light.getWorldQuaternion(worldQuat)
-        light.getWorldScale(worldScale)
-
-        new TinyLight({ position: worldPos, intensity: 0.3, name: 'Tiny' })
-
-        light = this.items['emissionmain']
-        light.getWorldPosition(worldPos)
-        light.getWorldQuaternion(worldQuat)
-        light.getWorldScale(worldScale)
-        worldPos.y -= 2
-        new TinyLight({ position: worldPos, intensity: 10, name: 'Main' })
-
-        light = this.items['emissionwindow']
-        light.getWorldPosition(worldPos)
-        light.getWorldQuaternion(worldQuat)
-        light.getWorldScale(worldScale)
-        new TinyLight({ position: worldPos, intensity: 0.6, name: 'Window' })
-
-        light = this.items['emissionshelf']
-        light.getWorldPosition(worldPos)
-        light.getWorldQuaternion(worldQuat)
-        light.getWorldScale(worldScale)
-        new TinyLight({ position: worldPos, intensity: 0.2, name: 'Shelf' })
-
-        light = this.items['emissionwindowshelf']
-        light.getWorldPosition(worldPos)
-        light.getWorldQuaternion(worldQuat)
-        light.getWorldScale(worldScale)
         new TinyLight({
-            position: worldPos,
+            mesh: this.items['emissiontiny'],
+            intensity: 0.3,
+            name: 'Tiny',
+        })
+
+        new TinyLight({
+            mesh: this.items['emissionmain'],
+            offset: { x: 0, y: -2, z: 0 },
+            intensity: 10,
+            name: 'Main',
+        })
+
+        new TinyLight({
+            mesh: this.items['emissionwindow'],
+            intensity: 0.6,
+            name: 'Window',
+        })
+
+        new TinyLight({
+            mesh: this.items['emissionshelf'],
+            intensity: 0.2,
+            name: 'Shelf',
+        })
+
+        new TinyLight({
+            mesh: this.items['emissionwindowshelf'],
             intensity: 0.2,
             name: 'Window Shelf',
         })
