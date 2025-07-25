@@ -1,9 +1,7 @@
-@import url('./css/webgl.css');
+@import url('./css/reset.css');
+@import url('./css/fonts.css');
 
-/* WEBGL */
-.webgl {
-    position: fixed;
-    top: 0;
-    left: 0;
-    outline: none;
-}
+@import url('./css/intro.css');
+@import url('./css/socials.css');
+
+@import url('./css/webgl.css');
