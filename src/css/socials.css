@@ -1,0 +1,16 @@
+.socials-overlay {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+}
+
+.socials-overlay .wrapper {
+    padding-inline-end: 24px;
+    padding-block-end: 24px;
+
+    color: white;
+
+    a:hover {
+        text-decoration: underline;
+    }
+}

@@ -1,0 +1,21 @@
+.content {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+
+.content .wrapper {
+    padding-inline-start: 24px;
+    padding-block-end: 24px;
+
+    color: white;
+}
+
+#name {
+}
+
+#title {
+}
+
+#intro {
+}

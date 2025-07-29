@@ -1,2 +1,7 @@
-@import url('./base.css');
-@import url('./components.css');
+@import url('./css/reset.css');
+@import url('./css/fonts.css');
+
+@import url('./css/intro.css');
+@import url('./css/socials.css');
+
+@import url('./css/webgl.css');
