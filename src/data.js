@@ -27,7 +27,7 @@ export const WORKS = [
     {
         title: 'Mistwood Cottage',
         techstack: ['threejs', 'rapier3d', 'blender', 'gsap'],
-        link: 'https://mistwood-cottage.vercel.app/',
+        link: 'mistwood-cottage.vercel.app',
         description: '',
     },
 ]
@@ -36,13 +36,13 @@ export const LABS = [
     {
         title: 'Grid Floor',
         techstack: ['glsl', 'threejs'],
-        link: 'https://grid-floor.vercel.app/',
+        link: 'grid-floor.vercel.app',
         description: '',
     },
     {
         title: 'Sticker Mart',
         techstack: ['react', 'framer motion', 'lenis'],
-        link: 'https://sticker-mart.vercel.app/',
+        link: 'sticker-mart.vercel.app',
         description: '',
     },
 ]

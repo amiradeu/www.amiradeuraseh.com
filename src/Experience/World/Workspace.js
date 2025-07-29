@@ -11,6 +11,7 @@ import {
 
 import Experience from '../Experience.js'
 import TinyLight from '../objects/TinyLight.js'
+import Text from '../objects/Text.js'
 
 export default class Workspace {
     constructor() {
@@ -69,6 +70,7 @@ export default class Workspace {
 
         this.setEmission()
         this.setCustom()
+        this.setTexts()
         this.setLights()
     }
 
@@ -106,6 +108,15 @@ export default class Workspace {
         this.monitor.parent.remove(this.monitor)
     }
 
+    setTexts() {
+        this.url = new Text(
+            this.items['texturl'],
+            'mistwood-cottage.vercel.app'
+        )
+
+        console.log(this.url.textCanvas.getMeasure().width)
+    }
+
     setLights() {
         new TinyLight({
             mesh: this.items['emissiontiny'],
@@ -139,7 +150,9 @@ export default class Workspace {
         })
     }
 
-    update() {}
+    update() {
+        this.url.textCanvas.draw()
+    }
 
     setDebug() {
         if (!this.debug.active) return
